@@ -1,0 +1,346 @@
+"use client";
+
+import { useButton } from '@react-aria/button';
+import {
+    type CSSProperties,
+    Component,
+    type FC,
+    type ReactNode,
+    useCallback,
+    useEffect,
+    useRef,
+    useState,
+} from 'react';
+import { useRouter, usePathname } from 'next/navigation';
+import { serializeError } from 'serialize-error';
+import { toast } from 'sonner';
+import { toPng } from 'html-to-image';
+// Removed heart beat import as it was in deleted __create directory
+
+// Mocking some react-router components/logic that are used in the original root.tsx
+const ScrollRestoration = () => null;
+
+function InternalErrorBoundary({ error: errorArg }: { error?: any }) {
+    const [isOpen, setIsOpen] = useState(false);
+    const shouldScale = typeof window !== 'undefined' ? window.innerWidth < 768 : false;
+    const scaleFactor = shouldScale ? 1.02 : 1;
+    const copyButtonTextClass = shouldScale ? 'text-sm' : 'text-xs';
+    const copyButtonPaddingClass = shouldScale ? 'px-[10px] py-[5px]' : 'px-[6px] py-[3px]';
+    const postCountRef = useRef(0);
+    const lastPostTimeRef = useRef(0);
+    const lastErrorKeyRef = useRef<string | null>(null);
+    const MAX_ERROR_POSTS_PER_ERROR = 5;
+    const THROTTLE_MS = 1000;
+
+    useEffect(() => {
+        if (!errorArg) return;
+        const serialized = serializeError(errorArg);
+        const errorKey = JSON.stringify(serialized);
+
+        if (errorKey !== lastErrorKeyRef.current) {
+            lastErrorKeyRef.current = errorKey;
+            postCountRef.current = 0;
+        }
+
+        if (postCountRef.current >= MAX_ERROR_POSTS_PER_ERROR) {
+            return;
+        }
+
+        const now = Date.now();
+        const timeSinceLastPost = now - lastPostTimeRef.current;
+
+        const post = () => {
+            if (postCountRef.current >= MAX_ERROR_POSTS_PER_ERROR) {
+                return;
+            }
+            postCountRef.current += 1;
+            lastPostTimeRef.current = Date.now();
+            window.parent.postMessage({ type: 'sandbox:error:detected', error: serialized }, '*');
+        };
+
+        if (timeSinceLastPost < THROTTLE_MS) {
+            const timer = setTimeout(post, THROTTLE_MS - timeSinceLastPost);
+            return () => clearTimeout(timer);
+        }
+
+        post();
+    }, [errorArg]);
+
+    useEffect(() => {
+        const animateTimer = setTimeout(() => setIsOpen(true), 100);
+        return () => clearTimeout(animateTimer);
+    }, []);
+
+    const { buttonProps: copyButtonProps } = useButton(
+        {
+            onPress: useCallback(() => {
+                const toastScale = shouldScale ? 1.2 : 1;
+                const toastStyle = {
+                    padding: `${16 * toastScale}px`,
+                    background: '#18191B',
+                    border: '1px solid #2C2D2F',
+                    color: 'white',
+                    borderRadius: '12px',
+                    boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)',
+                    width: `${280 * toastScale}px`,
+                    fontSize: `${13 * toastScale}px`,
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: `${6 * toastScale}px`,
+                    justifyContent: 'flex-start',
+                    margin: '0 auto',
+                };
+                navigator.clipboard.writeText(JSON.stringify(serializeError(errorArg)));
+                toast.custom(
+                    () => (
+                        <div style={toastStyle}>
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 20 20"
+                                fill="currentColor"
+                                height="20"
+                                width="20"
+                            >
+                                <title>Success</title>
+                                <path
+                                    fillRule="evenodd"
+                                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z"
+                                    clipRule="evenodd"
+                                />
+                            </svg>
+                            <span>Copied successfully!</span>
+                        </div>
+                    ),
+                    {
+                        id: 'copy-error-success',
+                        duration: 3000,
+                    }
+                );
+            }, [errorArg, shouldScale]),
+        },
+        useRef<HTMLButtonElement>(null)
+    );
+
+    function isInIframe() {
+        try {
+            return window.parent !== window;
+        } catch {
+            return true;
+        }
+    }
+
+    return (
+        <>
+            {!isInIframe() && (
+                <div
+                    className={`fixed bottom-4 left-1/2 transform -translate-x-1/2 max-w-md z-50 transition-all duration-500 ease-out ${isOpen ? 'translate-y-0 opacity-100' : 'translate-y-full opacity-0'
+                        }`}
+                    style={{ width: '75vw' }}
+                >
+                    <div
+                        className="bg-[#18191B] text-[#F2F2F2] rounded-lg p-4 shadow-lg w-full"
+                        style={
+                            scaleFactor !== 1
+                                ? ({
+                                    transform: `scale(${scaleFactor})`,
+                                    transformOrigin: 'bottom center',
+                                } as CSSProperties)
+                                : undefined
+                        }
+                    >
+                        <div className="flex items-start gap-3">
+                            <div className="flex-shrink-0">
+                                <div className="w-8 h-8 bg-[#F2F2F2] rounded-full flex items-center justify-center">
+                                    <span className="text-black text-[1.125rem] leading-none">!</span>
+                                </div>
+                            </div>
+
+                            <div className="flex flex-col gap-2 flex-1">
+                                <div className="flex flex-col gap-1">
+                                    <p className="font-light text-[#F2F2F2] text-sm">App Error Detected</p>
+                                    <p className="text-[#959697] text-sm font-light">
+                                        It looks like an error occurred while trying to use your app.
+                                    </p>
+                                </div>
+
+                                <button
+                                    className={`flex flex-row items-center justify-center gap-[4px] outline-none transition-colors rounded-[8px] border-[1px] bg-[#2C2D2F] hover:bg-[#414243] active:bg-[#555658] border-[#414243] text-white ${copyButtonTextClass} ${copyButtonPaddingClass} w-fit`}
+                                    type="button"
+                                    {...copyButtonProps}
+                                >
+                                    Copy error
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            )}
+        </>
+    );
+}
+
+class ErrorBoundaryWrapper extends Component<{ children: ReactNode }, { hasError: boolean; error: any }> {
+    state = { hasError: false, error: null };
+
+    static getDerivedStateFromError(error: any) {
+        return { hasError: true, error };
+    }
+
+    componentDidCatch(error: any, info: any) {
+        console.error(error, info);
+    }
+
+    render() {
+        if (this.state.hasError) {
+            return <InternalErrorBoundary error={this.state.error} />;
+        }
+        return this.props.children;
+    }
+}
+
+export const ClientOnly: FC<{ children: ReactNode }> = ({ children }) => {
+    const [isMounted, setIsMounted] = useState(false);
+
+    useEffect(() => {
+        setIsMounted(true);
+    }, []);
+
+    if (!isMounted) return null;
+
+    return (
+        <ErrorBoundaryWrapper>
+            {children}
+        </ErrorBoundaryWrapper>
+    );
+};
+
+export function useHmrConnection(): boolean {
+    return true; // Simplified for Next.js
+}
+
+const healthyResponseType = 'sandbox:web:healthcheck:response';
+const useHandshakeParent = () => {
+    const isHmrConnected = useHmrConnection();
+    useEffect(() => {
+        const healthyResponse = {
+            type: healthyResponseType,
+            healthy: isHmrConnected,
+            supportsErrorDetected: true,
+        };
+        const handleMessage = (event: MessageEvent) => {
+            if (event.data.type === 'sandbox:web:healthcheck') {
+                window.parent.postMessage(healthyResponse, '*');
+            }
+        };
+        window.addEventListener('message', handleMessage);
+        window.parent.postMessage(healthyResponse, '*');
+        return () => {
+            window.removeEventListener('message', handleMessage);
+        };
+    }, [isHmrConnected]);
+};
+
+const waitForScreenshotReady = async () => {
+    const images = Array.from(document.images);
+
+    await Promise.all([
+        'fonts' in document ? (document as any).fonts.ready : Promise.resolve(),
+        ...images.map(
+            (img) =>
+                new Promise((resolve) => {
+                    img.crossOrigin = 'anonymous';
+                    if (img.complete) {
+                        resolve(true);
+                        return;
+                    }
+                    img.onload = () => resolve(true);
+                    img.onerror = () => resolve(true);
+                })
+        ),
+    ]);
+
+    await new Promise((resolve) => setTimeout(resolve, 250));
+};
+
+export const useHandleScreenshotRequest = () => {
+    useEffect(() => {
+        const handleMessage = async (event: MessageEvent) => {
+            if (event.data.type === 'sandbox:web:screenshot:request') {
+                try {
+                    await waitForScreenshotReady();
+
+                    const width = window.innerWidth;
+                    const aspectRatio = 16 / 9;
+                    const height = Math.floor(width / aspectRatio);
+
+                    const dataUrl = await toPng(document.body, {
+                        cacheBust: true,
+                        skipFonts: false,
+                        width,
+                        height,
+                        style: {
+                            width: `${width}px`,
+                            height: `${height}px`,
+                            margin: '0',
+                        },
+                    });
+
+                    window.parent.postMessage({ type: 'sandbox:web:screenshot:response', dataUrl }, '*');
+                } catch (error) {
+                    window.parent.postMessage(
+                        {
+                            type: 'sandbox:web:screenshot:error',
+                            error: error instanceof Error ? error.message : String(error),
+                        },
+                        '*'
+                    );
+                }
+            }
+        };
+
+        window.addEventListener('message', handleMessage);
+        return () => {
+            window.removeEventListener('message', handleMessage);
+        };
+    }, []);
+};
+
+export function Layout({ children }: { children: ReactNode }) {
+    useHandshakeParent();
+    useHandleScreenshotRequest();
+    // useDevServerHeartbeat removed
+    const router = useRouter();
+    const pathname = usePathname();
+
+    useEffect(() => {
+        const handleMessage = (event: MessageEvent) => {
+            if (event.data.type === 'sandbox:navigation') {
+                router.push(event.data.pathname);
+            }
+        };
+        window.addEventListener('message', handleMessage);
+        window.parent.postMessage({ type: 'sandbox:web:ready' }, '*');
+        return () => {
+            window.removeEventListener('message', handleMessage);
+        };
+    }, [router]);
+
+    useEffect(() => {
+        if (pathname) {
+            window.parent.postMessage(
+                {
+                    type: 'sandbox:web:navigation',
+                    pathname,
+                },
+                '*'
+            );
+        }
+    }, [pathname]);
+
+    return (
+        <>
+            <ClientOnly>{children}</ClientOnly>
+            <ScrollRestoration />
+        </>
+    );
+}
