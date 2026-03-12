@@ -11,8 +11,8 @@ export default function Home() {
     <main>
       <Navbar />
       <Hero />
-      <WhyUs />
       <Categories />
+      <WhyUs />
       <Services />
       <Footer />
       <FloatingWA />
