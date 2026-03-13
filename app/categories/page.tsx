@@ -381,7 +381,7 @@ export default function CategoriesPage() {
                                 <circle cx="8" cy="2" r="1.5" fill="#F59E0B" />
                             </svg>
                         </div>
-                        <span className="font-display text-lg text-[#0A0A0F] tracking-tight">Galaxy<span className="text-blue-600">Database</span></span>
+                        <span className="text-lg text-[#0A0A0F] tracking-tight">Galaxy<span className="text-blue-600">Database</span></span>
                     </Link>
                     <div className="flex items-center gap-4">
                         <Link href="/" className="text-sm text-slate-500 hover:text-[#0A0A0F] transition-colors flex items-center gap-1.5 group">
@@ -405,11 +405,11 @@ export default function CategoriesPage() {
                             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-60" />
                             <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-500" />
                         </span>
-                        <span className="text-[11px] font-mono font-bold text-blue-600 uppercase tracking-widest">All Categories</span>
+                        <span className="text-[11px] font-bold text-blue-600 uppercase tracking-widest">All Categories</span>
                     </div>
-                    <h1 className="font-display text-5xl md:text-6xl text-[#0A0A0F] leading-[1.06] tracking-tight mb-5">
+                    <h1 className="britti-special text-5xl md:text-6xl text-[#0A0A0F] leading-[1.06] tracking-tight mb-5">
                         {ALL_LEAD_CATEGORIES.length} Premium<br />
-                        <span className="italic" style={{ background: 'linear-gradient(135deg,#3B82F6 0%,#6366F1 50%,#8B5CF6 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
+                        <span className="italic britti-gradient">
                             Lead Databases
                         </span>
                     </h1>
@@ -420,8 +420,8 @@ export default function CategoriesPage() {
                 <div className="mt-10 flex flex-wrap gap-4">
                     {[{ num: String(ALL_LEAD_CATEGORIES.length), label: 'Databases' }, { num: '30L+', label: 'Verified records' }, { num: '90 days', label: 'Update cycle' }, { num: '~2 min', label: 'Delivery time' }].map((s) => (
                         <div key={s.label} className="bg-white border border-[#EAEAE6] rounded-xl px-5 py-3 shadow-sm">
-                            <div className="font-display text-xl text-[#0A0A0F] leading-none mb-0.5">{s.num}</div>
-                            <div className="text-[10.5px] font-mono text-slate-400 uppercase tracking-widest">{s.label}</div>
+                            <div className="britti-special text-xl text-[#0A0A0F] leading-none mb-0.5">{s.num}</div>
+                            <div className="text-[10.5px] text-slate-400 uppercase tracking-widest">{s.label}</div>
                         </div>
                     ))}
                 </div>
@@ -433,7 +433,7 @@ export default function CategoriesPage() {
                     {sectors.map((s) => (
                         <FilterPill key={s} label={s} active={activeFilter === s} count={s === 'All' ? ALL_LEAD_CATEGORIES.length : (sectorCounts[s] || 0)} onClick={() => setActiveFilter(s)} />
                     ))}
-                    <span className="ml-auto pl-4 shrink-0 text-[12px] font-mono text-slate-400 whitespace-nowrap">
+                    <span className="ml-auto pl-4 shrink-0 text-[12px] text-slate-400 whitespace-nowrap">
                         {filtered.length} result{filtered.length !== 1 ? 's' : ''}
                     </span>
                 </div>
@@ -467,9 +467,9 @@ export default function CategoriesPage() {
                         <div>
                             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white border border-[#DBEAFE] shadow-sm mb-4">
                                 <span className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse" />
-                                <span className="text-[11px] font-mono font-bold text-slate-600 uppercase tracking-widest">Custom Requests</span>
+                                <span className="text-[11px] font-bold text-slate-600 uppercase tracking-widest">Custom Requests</span>
                             </div>
-                            <h2 className="font-display text-3xl md:text-4xl text-[#0A0A0F] mb-3">Don't see what you need?</h2>
+                            <h2 className="britti-special text-3xl md:text-4xl text-[#0A0A0F] mb-3">Don't see what you need?</h2>
                             <p className="text-[#6B6B8A] text-base leading-relaxed max-w-lg">
                                 We source custom databases on request — any profession, industry, geography, or consumer segment. Tell us what you need.
                             </p>
@@ -491,8 +491,8 @@ export default function CategoriesPage() {
             {/* Footer */}
             <footer className="border-t border-[#EAEAE6] py-8">
                 <div className="max-w-7xl mx-auto px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-                    <span className="text-[12px] font-mono text-slate-400">© {new Date().getFullYear()} Galaxy Database. All rights reserved.</span>
-                    <Link href="/" className="text-[12px] font-mono text-slate-400 hover:text-[#0A0A0F] transition-colors">← Back to homepage</Link>
+                    <span className="text-[12px] text-slate-400">© {new Date().getFullYear()} Galaxy Database. All rights reserved.</span>
+                    <Link href="/" className="text-[12px] text-slate-400 hover:text-[#0A0A0F] transition-colors">← Back to homepage</Link>
                 </div>
             </footer>
         </div>

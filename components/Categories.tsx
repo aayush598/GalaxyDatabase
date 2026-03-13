@@ -310,19 +310,19 @@ function CarouselCard({ cat, artIdx }: { cat: typeof ALL_LEAD_CATEGORIES[0]; art
       <div className="relative h-[148px] overflow-hidden flex-shrink-0">
         <Art />
         <div className="absolute bottom-3 right-3 bg-white/90 backdrop-blur-sm rounded-xl px-2.5 py-1.5 shadow-sm border border-white/60">
-          <span className={`font-display text-sm font-bold leading-none ${p.record}`}>{cat.records}</span>
-          <span className="block text-[8px] font-mono text-slate-400 uppercase tracking-wider mt-0.5">Records</span>
+          <span className={`text-sm font-bold leading-none ${p.record}`}>{cat.records}</span>
+          <span className="block text-[8px] text-slate-400 uppercase tracking-wider mt-0.5">Records</span>
         </div>
         <div className="absolute top-3 left-3 flex items-center gap-1.5 bg-white/90 backdrop-blur-sm rounded-full px-2.5 py-1 shadow-sm border border-white/60">
           <span className={`w-1.5 h-1.5 rounded-full ${p.dot}`} />
-          <span className="text-[9px] font-mono font-bold uppercase tracking-[0.12em] text-slate-500">{cat.sector}</span>
+          <span className="text-[9px] font-bold uppercase tracking-[0.12em] text-slate-500">{cat.sector}</span>
         </div>
       </div>
 
       {/* Content */}
       <div className="flex flex-col flex-1 px-5 pt-4 pb-5">
         <div className={`h-0.5 w-7 rounded-full ${p.bar} mb-3 group-hover:w-14 transition-all duration-500`} />
-        <h3 className="font-body font-bold text-[#0A0A0F] text-[14px] leading-snug mb-2">{cat.title}</h3>
+        <h3 className="font-bold text-[#0A0A0F] text-[14px] leading-snug mb-2">{cat.title}</h3>
         <ul className="space-y-1.5 mb-3 flex-1">
           {cat.subItems.map((item) => (
             <li key={item} className="flex items-center gap-2">
@@ -331,7 +331,7 @@ function CarouselCard({ cat, artIdx }: { cat: typeof ALL_LEAD_CATEGORIES[0]; art
             </li>
           ))}
         </ul>
-        <p className="text-[10px] text-slate-400 font-mono mb-4 leading-relaxed">
+        <p className="text-[10px] text-slate-400 mb-4 leading-relaxed">
           <span className="text-slate-500 font-semibold">For:</span> {cat.idealFor}
         </p>
         <a
@@ -540,15 +540,12 @@ export default function Categories() {
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-60" />
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-500" />
               </span>
-              <span className="text-[11px] font-mono font-bold text-blue-600 uppercase tracking-widest">Lead Categories</span>
+              <span className="text-[11px] font-bold text-blue-600 uppercase tracking-widest">Lead Categories</span>
             </div>
-            <h2 className="font-display text-4xl md:text-5xl text-[#0A0A0F] leading-[1.08] tracking-tight">
+            <h2 className="britti-special text-4xl md:text-5xl text-[#0A0A0F] leading-[1.08] tracking-tight">
               {ALL_LEAD_CATEGORIES.length} Premium Lead
               <br />
-              <span className="italic" style={{
-                background: 'linear-gradient(135deg,#3B82F6 0%,#6366F1 50%,#8B5CF6 100%)',
-                WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text',
-              }}>Databases</span>
+              <span className="italic britti-gradient">Databases</span>
             </h2>
           </div>
           <div className="flex flex-col gap-3 lg:items-end">
@@ -584,9 +581,9 @@ export default function Categories() {
                       <div key={c} className={`w-5 h-5 rounded-full ${c} border-2 border-white shadow-sm`} />
                     ))}
                   </div>
-                  <span className="text-[12px] font-mono text-slate-500 font-semibold">{ALL_LEAD_CATEGORIES.length} total databases</span>
+                  <span className="text-[12px] text-slate-500 font-semibold">{ALL_LEAD_CATEGORIES.length} total databases</span>
                 </div>
-                <h3 className="font-display text-2xl md:text-3xl text-[#0A0A0F] mb-2">
+                <h3 className="text-2xl md:text-3xl text-[#0A0A0F] mb-2">
                   Browse all databases &amp; filter by sector
                 </h3>
                 <p className="text-[#6B6B8A] text-[13px] max-w-md leading-relaxed">

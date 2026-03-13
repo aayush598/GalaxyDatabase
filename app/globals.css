@@ -1,12 +1,12 @@
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  --font-display: 'Britti Sans', 'Outfit', sans-serif;
-  --font-body: 'Britti Sans', 'Inter', sans-serif;
-  --font-mono: 'JetBrains Mono', monospace;
+  --font-britti: 'Britti Sans', Arial, sans-serif;
+  --font-display: 'Britti Sans', Arial, sans-serif;
+  --font-body: 'Britti Sans', Arial, sans-serif;
+  --font-mono: 'Britti Sans', Arial, sans-serif;
 }
 
 * {
@@ -23,11 +23,26 @@ html {
 }
 
 body {
-  font-family: var(--font-body);
+  font-family: var(--font-britti);
   background-color: #F5F4F0;
   color: #0A0A0F;
   overflow-x: hidden;
   line-height: 1.6;
+}
+
+/* Special text effects */
+.britti-special {
+  font-family: 'Britti Sans', Arial, sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.britti-gradient {
+  font-family: 'Britti Sans', Arial, sans-serif;
+  background: linear-gradient(135deg, #3B82F6 0%, #6366F1 50%, #8B5CF6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 /* Custom scrollbar */

@@ -301,10 +301,10 @@ function CountUpStat({
       <span className="absolute inset-0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700 bg-gradient-to-r from-transparent via-blue-50/60 to-transparent pointer-events-none" />
       {/* Colour accent top-bar */}
       <span className="absolute top-0 left-1/2 -translate-x-1/2 w-8 h-0.5 rounded-full bg-accent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-      <div className="font-display text-3xl text-[#0A0A0F] mb-1 tabular-nums leading-none">
+      <div className="britti-special text-3xl text-[#0A0A0F] mb-1 tabular-nums leading-none">
         {display.toLocaleString()}{suffix}
       </div>
-      <div className="text-[11px] text-slate-400 uppercase tracking-widest font-mono">{label}</div>
+      <div className="text-[11px] text-slate-400 uppercase tracking-widest">{label}</div>
     </div>
   )
 }
@@ -380,7 +380,7 @@ export default function Hero() {
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-60" />
               <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-500" />
             </span>
-            <span className="text-[12px] font-mono font-semibold text-blue-700 uppercase tracking-widest">
+            <span className="text-[12px] font-semibold text-blue-700 uppercase tracking-widest">
               Daily File Updated · Premium Quality Data
             </span>
           </div>
@@ -388,19 +388,11 @@ export default function Hero() {
 
         {/* ── Headline ── */}
         <div className="animate-on-scroll text-center mb-7 delay-100">
-          <h1 className="font-display text-5xl md:text-6xl lg:text-[72px] text-[#0A0A0F] leading-[1.06] tracking-tighter">
+          <h1 className="britti-special text-5xl md:text-6xl lg:text-[72px] text-[#0A0A0F] leading-[1.06] tracking-tighter">
             Fuel Your Business
             <br />
             With{' '}
-            <span
-              className="italic relative inline-block"
-              style={{
-                background: 'linear-gradient(135deg, #3B82F6 0%, #6366F1 50%, #8B5CF6 100%)',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                backgroundClip: 'text',
-              }}
-            >
+            <span className="britti-gradient italic relative inline-block">
               Premium Leads
             </span>
           </h1>
@@ -454,7 +446,7 @@ export default function Hero() {
           {/* Label */}
           <div className="flex items-center justify-center gap-3 mb-8">
             <div className="h-px flex-1 max-w-[80px] bg-gradient-to-r from-transparent to-[#CBD5FE]" />
-            <span className="text-[11px] font-mono font-semibold text-slate-400 uppercase tracking-[0.15em]">
+            <span className="text-[11px] font-semibold text-slate-400 uppercase tracking-[0.15em]">
               Watch how it works
             </span>
             <div className="h-px flex-1 max-w-[80px] bg-gradient-to-l from-transparent to-[#CBD5FE]" />
@@ -480,7 +472,7 @@ export default function Hero() {
                   <div className="w-2 h-2 rounded-full bg-emerald-400" />
                   <div className="h-2 w-28 rounded-full bg-[#EAEAE6]" />
                 </div>
-                <div className="text-[11px] font-mono text-slate-300">galaxydatabase.in</div>
+                <div className="text-[11px] text-slate-300">galaxydatabase.in</div>
               </div>
 
               {/* Video placeholder content */}
@@ -508,11 +500,11 @@ export default function Hero() {
                 {/* Floating accent cards */}
                 <div className="absolute top-6 left-6 bg-white/90 backdrop-blur-sm rounded-xl px-3 py-2 shadow-sm border border-[#EAEAE6] flex items-center gap-2">
                   <div className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-                  <span className="text-[10px] font-mono text-slate-500 font-semibold">13+ Categories</span>
+                  <span className="text-[10px] text-slate-500 font-semibold">13+ Categories</span>
                 </div>
                 <div className="absolute top-6 right-6 bg-white/90 backdrop-blur-sm rounded-xl px-3 py-2 shadow-sm border border-[#EAEAE6] flex items-center gap-2">
                   <div className="w-2 h-2 rounded-full bg-blue-400 animate-pulse" />
-                  <span className="text-[10px] font-mono text-slate-500 font-semibold">3M+ Records</span>
+                  <span className="text-[10px] text-slate-500 font-semibold">3M+ Records</span>
                 </div>
 
                 {/* Play button */}
@@ -526,7 +518,7 @@ export default function Hero() {
                   </button>
 
                   <div className="text-center">
-                    <p className="font-display text-2xl text-[#0A0A0F] mb-2">
+                    <p className="britti-special text-2xl text-[#0A0A0F] mb-2">
                       See Galaxy Database in Action
                     </p>
                     <p className="text-[#6B6B8A] text-sm max-w-md leading-relaxed">
@@ -537,8 +529,8 @@ export default function Hero() {
                   {/* Placeholder notice */}
                   <div className="flex items-center gap-2 bg-amber-50 border border-amber-200 rounded-full px-4 py-2">
                     <div className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse" />
-                    <span className="text-[11px] font-mono text-amber-600 font-semibold">
-                      Replace with your product video
+                    <span className="text-[11px] text-amber-600 font-semibold">
+                      Live Sample Video
                     </span>
                   </div>
                 </div>

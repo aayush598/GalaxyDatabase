@@ -53,11 +53,11 @@ function CountUpStat({
     >
       {/* shimmer sweep on hover */}
       <span className="absolute inset-0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700 bg-gradient-to-r from-transparent via-black/5 to-transparent pointer-events-none" />
-      <div className="font-display text-3xl md:text-4xl text-ink mb-1 tabular-nums">
+      <div className="britti-special text-3xl md:text-4xl text-ink mb-1 tabular-nums">
         {isNumeric ? display.toLocaleString() : target}{suffix}
       </div>
-      <div className="font-body text-sm font-semibold text-slate mb-0.5">{label}</div>
-      {sub && <div className="font-mono text-xs text-slate-light uppercase tracking-widest">{sub}</div>}
+      <div className="text-sm font-semibold text-slate mb-0.5">{label}</div>
+      {sub && <div className="text-xs text-slate-light uppercase tracking-widest">{sub}</div>}
     </div>
   )
 }
@@ -103,8 +103,8 @@ function RefreshVisual() {
 
         {/* Center calendar badge */}
         <div className="absolute inset-[26px] rounded-xl bg-white flex flex-col items-center justify-center border border-ink/5 group-hover:border-accent/40 transition-all duration-500 shadow-sm">
-          <div className="text-[9px] font-mono text-slate-light uppercase tracking-widest mb-0.5">Refresh</div>
-          <div className="font-display text-base text-ink leading-none">1d</div>
+          <div className="text-[9px] text-slate-light uppercase tracking-widest mb-0.5">Refresh</div>
+          <div className="britti-special text-base text-ink leading-none">1d</div>
         </div>
 
         {/* Tick marks */}
@@ -184,7 +184,7 @@ function DeliveryVisual() {
         <div className="absolute top-0 left-1/2 -translate-x-1/2 flex flex-col items-center group-hover:translate-y-8 transition-transform duration-500 ease-in-out">
           <div className="w-10 h-12 rounded-lg bg-[#1D6F42] border border-white/10 flex flex-col items-center justify-center shadow-lg group-hover:shadow-emerald-500/20 relative overflow-hidden">
             <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:8px_8px]" />
-            <span className="text-[10px] font-mono font-bold text-white relative z-10">XLS</span>
+            <span className="text-[10px] font-bold text-white relative z-10">XLS</span>
           </div>
           {/* Animated speed lines */}
           <div className="flex gap-1 mt-1 opacity-0 group-hover:opacity-100 transition-opacity duration-200 delay-200">
@@ -208,7 +208,7 @@ function DeliveryVisual() {
         {/* Timer badge */}
         <div className="absolute bottom-0 right-4 bg-ink border border-white/10 rounded-lg px-2 py-1 flex items-center gap-1.5 opacity-0 group-hover:opacity-100 transition-all duration-300 delay-700 translate-y-2 group-hover:translate-y-0">
           <div className="w-1.5 h-1.5 rounded-full bg-gold animate-pulse" />
-          <span className="text-[9px] font-mono text-silver-light">~2 min</span>
+          <span className="text-[9px] text-silver-light">~2 min</span>
         </div>
       </div>
     </div>
@@ -256,7 +256,7 @@ function TargetedVisual() {
         <div className="absolute bottom-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-300">
           <div className="flex items-center gap-1 bg-accent/10 border border-accent/20 rounded px-1.5 py-0.5">
             <div className="w-1 h-1 rounded-full bg-accent" />
-            <span className="text-[8px] font-mono text-accent uppercase tracking-widest">Locked</span>
+            <span className="text-[8px] text-accent uppercase tracking-widest">Locked</span>
           </div>
         </div>
       </div>
@@ -274,7 +274,7 @@ function ExcelVisual() {
         <div className="grid grid-cols-3 gap-1 mb-0.5">
           {['A', 'B', 'C'].map((col) => (
             <div key={col} className="h-5 rounded bg-[#1D6F42]/20 border border-[#1D6F42]/30 flex items-center justify-center">
-              <span className="text-[8px] font-mono font-bold text-emerald-500">{col}</span>
+              <span className="text-[8px] font-bold text-emerald-500">{col}</span>
             </div>
           ))}
         </div>
@@ -287,7 +287,7 @@ function ExcelVisual() {
             style={{ transitionDelay: `${i * 55}ms` }}
           >
             <div className="h-5 rounded bg-white border border-ink/10 flex items-center px-1.5 col-span-1">
-              <span className="text-[8px] font-mono text-slate-light truncate">{row}</span>
+              <span className="text-[8px] text-slate-light truncate">{row}</span>
             </div>
             <div className="h-5 rounded bg-white border border-ink/5 col-span-1 relative overflow-hidden">
               <div
@@ -303,9 +303,9 @@ function ExcelVisual() {
         <div className="mt-1 flex items-center justify-between opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-500">
           <div className="flex items-center gap-1">
             <div className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
-            <span className="text-[8px] font-mono text-slate-light">CRM-Ready</span>
+            <span className="text-[8px] text-slate-light">CRM-Ready</span>
           </div>
-          <span className="text-[8px] font-mono text-slate">xlsx ↓</span>
+          <span className="text-[8px] text-slate">xlsx ↓</span>
         </div>
       </div>
     </div>
@@ -365,7 +365,7 @@ function SecureVisual() {
         {/* Encryption label */}
         <div className="flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-all duration-400 delay-400 translate-y-1 group-hover:translate-y-0">
           <div className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
-          <span className="text-[9px] font-mono text-slate-light uppercase tracking-widest">Encrypted</span>
+          <span className="text-[9px] text-slate-light uppercase tracking-widest">Encrypted</span>
         </div>
 
         {/* Radial glow */}
@@ -421,7 +421,7 @@ function BentoCard({
       {/* Content zone */}
       <div className="relative z-10 px-6 py-5 flex-none">
         <div className="flex items-center justify-between mb-3">
-          <span className={`text-[10px] font-mono font-bold uppercase tracking-[0.12em] ${accent} bg-ink/5 px-2.5 py-1 rounded-full border border-ink/8`}>
+          <span className={`text-[10px] font-bold uppercase tracking-[0.12em] ${accent} bg-ink/5 px-2.5 py-1 rounded-full border border-ink/8`}>
             {tag}
           </span>
           {/* Arrow icon — slides in on hover */}
@@ -433,7 +433,7 @@ function BentoCard({
             <path d="M5 12h14M12 5l7 7-7 7" />
           </svg>
         </div>
-        <h3 className="font-body font-semibold text-ink text-[15px] mb-1.5 leading-snug">{title}</h3>
+        <h3 className="font-semibold text-ink text-[15px] mb-1.5 leading-snug">{title}</h3>
         <p className="text-slate-light text-[13px] leading-relaxed">{description}</p>
       </div>
     </div>
@@ -447,9 +447,9 @@ function StatBlock({ num, label, sub }: { num: string; label: string; sub: strin
   return (
     <div className="text-center p-7 rounded-2xl bg-white border border-ink/5 relative overflow-hidden group hover:-translate-y-1 transition-transform duration-300 shadow-sm">
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_0%,rgba(59,130,246,0.08),transparent_60%)] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-      <div className="font-display text-3xl md:text-4xl text-ink mb-1.5 relative z-10">{num}</div>
-      <div className="font-body text-sm font-semibold text-slate mb-0.5 relative z-10">{label}</div>
-      <div className="font-mono text-[10px] text-slate-light uppercase tracking-widest relative z-10">{sub}</div>
+      <div className="britti-special text-3xl md:text-4xl text-ink mb-1.5 relative z-10">{num}</div>
+      <div className="text-sm font-semibold text-slate mb-0.5 relative z-10">{label}</div>
+      <div className="text-[10px] text-slate-light uppercase tracking-widest relative z-10">{sub}</div>
     </div>
   )
 }
@@ -544,7 +544,7 @@ export default function WhyUs() {
               <span className="w-1.5 h-1.5 rounded-full bg-gold inline-block" />
               Why Galaxy Database
             </div>
-            <h2 className="font-display text-4xl md:text-5xl text-ink leading-[1.1] tracking-tight">
+            <h2 className="britti-special text-4xl md:text-5xl text-ink leading-[1.1] tracking-tight">
               The most trusted
               <br />
               <span className="italic">data partner</span> for

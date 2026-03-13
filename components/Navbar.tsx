@@ -32,7 +32,7 @@ export default function Navbar() {
                 <circle cx="8" cy="2" r="1.5" fill="#F59E0B" />
               </svg>
             </div>
-            <span className="font-display text-lg text-ink tracking-tight">
+            <span className="text-lg text-ink tracking-tight">
               Galaxy<span className="text-accent">Database</span>
             </span>
           </a>
@@ -43,7 +43,7 @@ export default function Navbar() {
               <a
                 key={item}
                 href={`#${item.toLowerCase().replace(' ', '-')}`}
-                className="text-sm font-body text-[#4A4A6A] hover:text-[#0A0A0F] transition-colors duration-200 relative group"
+                className="text-sm text-[#4A4A6A] hover:text-[#0A0A0F] transition-colors duration-200 relative group"
               >
                 {item}
                 <span className="absolute -bottom-0.5 left-0 w-0 h-px bg-accent group-hover:w-full transition-all duration-300" />
@@ -89,7 +89,7 @@ export default function Navbar() {
                 key={item}
                 href={`#${item.toLowerCase().replace(' ', '-')}`}
                 onClick={() => setMenuOpen(false)}
-                className="text-base font-body text-slate-light hover:text-ink transition-colors py-1"
+                className="text-base text-slate-light hover:text-ink transition-colors py-1"
               >
                 {item}
               </a>

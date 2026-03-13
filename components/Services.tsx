@@ -96,7 +96,7 @@ function GraphicDesignVisual() {
                     <div className="w-5 h-5 rounded-full border-2 border-slate-200 group-hover:border-pink-400 transition-colors duration-500" />
                   )}
                   {i === 5 && (
-                    <div className="font-display text-xs font-bold text-ink opacity-60 group-hover:opacity-100 transition-opacity duration-300">Gx</div>
+                    <div className="text-xs font-bold text-ink opacity-60 group-hover:opacity-100 transition-opacity duration-300">Gx</div>
                   )}
                 </div>
               ))}
@@ -142,9 +142,9 @@ function DigitalMarketingVisual() {
           <div className="flex divide-x divide-[#F0F0EC] border-b border-[#F0F0EC]">
             {[{ label: 'Impressions', val: '48.2K', up: true }, { label: 'Clicks', val: '3.8K', up: true }, { label: 'Conv.', val: '12.4%', up: false }].map((m, i) => (
               <div key={i} className="flex-1 px-3 py-2.5">
-                <div className="text-[9px] font-mono text-slate-400 uppercase tracking-widest mb-0.5">{m.label}</div>
+                <div className="text-[9px] text-slate-400 uppercase tracking-widest mb-0.5">{m.label}</div>
                 <div className="flex items-end gap-1">
-                  <span className="font-display text-sm font-semibold text-ink">{m.val}</span>
+                  <span className="text-sm font-semibold text-ink">{m.val}</span>
                   <span className={`text-[9px] font-bold mb-0.5 ${m.up ? 'text-emerald-500' : 'text-rose-500'}`}>{m.up ? '↑' : '↓'}</span>
                 </div>
               </div>
@@ -166,7 +166,7 @@ function DigitalMarketingVisual() {
             </div>
             <div className="flex justify-between mt-1">
               {['M', 'T', 'W', 'T', 'F', 'S', 'S'].map((d, i) => (
-                <div key={i} className="flex-1 text-center text-[8px] font-mono text-slate-300">{d}</div>
+                <div key={i} className="flex-1 text-center text-[8px] text-slate-300">{d}</div>
               ))}
             </div>
           </div>
@@ -178,7 +178,7 @@ function DigitalMarketingVisual() {
             <div className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
           </div>
           <div>
-            <div className="text-[9px] font-mono text-slate-400 uppercase leading-none">New lead</div>
+            <div className="text-[9px] text-slate-400 uppercase leading-none">New lead</div>
             <div className="text-[10px] font-semibold text-ink">+12 today</div>
           </div>
         </div>
@@ -205,10 +205,10 @@ function SoftwareDevVisual() {
           <div className="flex gap-1.5">
             <div className="w-2.5 h-2.5 rounded-full bg-[#FF5F57]" /><div className="w-2.5 h-2.5 rounded-full bg-[#FEBC2E]" /><div className="w-2.5 h-2.5 rounded-full bg-[#28C840]" />
           </div>
-          <span className="text-[10px] font-mono text-ink/40 ml-auto">galaxy_api.ts</span>
+          <span className="text-[10px] text-ink/40 ml-auto">galaxy_api.ts</span>
         </div>
         {/* Code body */}
-        <div className="bg-white rounded-b-none px-4 py-3 font-mono text-[10px] leading-[1.7] space-y-0 border-x border-ink/5">
+        <div className="bg-white rounded-b-none px-4 py-3 text-[10px] leading-[1.7] space-y-0 border-x border-ink/5">
           {lines.map((line, li) => (
             <div
               key={li}
@@ -256,8 +256,8 @@ function WhatsAppCRMVisual() {
             <div className="bg-[#075E54] px-3 py-2 flex items-center gap-2">
               <div className="w-6 h-6 rounded-full bg-emerald-300 border border-ink/10" />
               <div>
-                <div className="text-[9px] font-bold text-white font-mono">Galaxy CRM Bot</div>
-                <div className="text-[7px] text-emerald-200 font-mono">● online</div>
+                <div className="text-[9px] font-bold text-white">Galaxy CRM Bot</div>
+                <div className="text-[7px] text-emerald-200">● online</div>
               </div>
             </div>
             {/* Messages */}
@@ -274,7 +274,7 @@ function WhatsAppCRMVisual() {
                       : 'bg-[#DCF8C6]'
                     : 'bg-white'
                     }`}>
-                    <p className={`text-[8px] font-mono leading-tight ${m.auto ? 'text-emerald-700 font-semibold' : 'text-[#111]'}`}>
+                    <p className={`text-[8px] leading-tight ${m.auto ? 'text-emerald-700 font-semibold' : 'text-[#111]'}`}>
                       {m.text}
                     </p>
                     {m.side === 'right' && (
@@ -297,19 +297,19 @@ function WhatsAppCRMVisual() {
         </div>
 
         {/* Floating automation badge — z-axis above phone */}
-        <div className="absolute -top-3 -right-6 bg-white rounded-xl shadow-[0_4px_20px_rgba(0,0,0,0.12)] border border-[#EAEAE6] px-2.5 py-1.5 opacity-0 group-hover:opacity-100 group-hover:-translate-y-1 transition-all duration-500 delay-400 z-20">
-          <div className="text-[8px] font-mono text-slate-400 uppercase mb-0.5">Auto-replied</div>
+        <div className="absolute -top-3 -right-6 bg-white rounded-xl shadow-[0_4px_20px_rgba(0,0,0,0.12)] border border-[#EAEAE6] px-2.5 py-1.5 opacity-0 group-hover:opacity-100 group-hover:-translate-y-1 transition-all duration-500 delay-200 z-20">
+          <div className="text-[8px] text-slate-400 uppercase mb-0.5">Auto-replied</div>
           <div className="text-[11px] font-bold text-emerald-600">1,240 msgs</div>
         </div>
 
         {/* Floating CRM pipeline badge */}
         <div className="absolute -bottom-2 -left-8 bg-white rounded-xl shadow-[0_4px_20px_rgba(0,0,0,0.12)] border border-[#EAEAE6] px-2.5 py-1.5 opacity-0 group-hover:opacity-100 group-hover:translate-y-0.5 transition-all duration-500 delay-500 z-20">
-          <div className="text-[8px] font-mono text-slate-400 uppercase mb-0.5">Pipeline</div>
+          <div className="text-[8px] text-slate-400 uppercase mb-0.5">Pipeline</div>
           <div className="flex items-center gap-1">
             {['bg-blue-400', 'bg-amber-400', 'bg-emerald-400'].map((c, i) => (
               <div key={i} className={`w-3 h-3 rounded-sm ${c}`} />
             ))}
-            <span className="text-[9px] font-mono text-ink ml-0.5">3 stages</span>
+            <span className="text-[9px] text-ink ml-0.5">3 stages</span>
           </div>
         </div>
       </div>
@@ -420,7 +420,7 @@ function ServiceCard({
         {service.featured && (
           <div className="absolute top-3 left-3 z-20 flex items-center gap-1.5 bg-white/90 backdrop-blur-sm border border-[#25D366]/25 rounded-full px-2.5 py-1 shadow-sm">
             <div className="w-1.5 h-1.5 rounded-full bg-[#25D366] animate-pulse" />
-            <span className="text-[9px] font-mono font-bold text-green-700 uppercase tracking-wider">New service</span>
+            <span className="text-[9px] font-bold text-green-700 uppercase tracking-wider">New service</span>
           </div>
         )}
         <service.Visual />
@@ -430,7 +430,7 @@ function ServiceCard({
       <div className="flex flex-col flex-1 px-6 pt-5 pb-6">
         {/* Tag + arrow */}
         <div className="flex items-center justify-between mb-3">
-          <span className={`text-[10px] font-mono font-bold uppercase tracking-[0.12em] px-2.5 py-1 rounded-full border ${service.tagColor}`}>
+          <span className={`text-[10px] font-bold uppercase tracking-[0.12em] px-2.5 py-1 rounded-full border ${service.tagColor}`}>
             {service.tag}
           </span>
           <svg
@@ -441,7 +441,7 @@ function ServiceCard({
           </svg>
         </div>
 
-        <h3 className="font-body font-semibold text-[#0A0A0F] text-[15px] leading-snug mb-2">
+        <h3 className="britti-special font-semibold text-[#0A0A0F] text-[15px] leading-snug mb-2">
           {service.title}
         </h3>
         <p className="text-[#6B6B8A] text-[13px] leading-relaxed mb-4 flex-1">
@@ -506,7 +506,7 @@ export default function Services() {
               <span className="w-1.5 h-1.5 rounded-full bg-gold inline-block" />
               Our Services
             </div>
-            <h2 className="font-display text-4xl md:text-5xl text-ink leading-[1.1] tracking-tighter">
+            <h2 className="britti-special text-4xl md:text-5xl text-ink leading-[1.1] tracking-tighter">
               More than just data.
               <br />
               <span className="italic">We build, market</span>
@@ -547,9 +547,9 @@ export default function Services() {
             <div>
               <div className="flex items-center gap-2 mb-2">
                 <div className="w-2 h-2 rounded-full bg-accent animate-pulse" />
-                <span className="text-[11px] font-mono text-slate-400 uppercase tracking-widest">Get in touch</span>
+                <span className="text-[11px] text-slate-400 uppercase tracking-widest">Get in touch</span>
               </div>
-              <h3 className="font-display text-2xl md:text-3xl text-ink mb-1.5">Ready to get started?</h3>
+              <h3 className="britti-special text-2xl md:text-3xl text-ink mb-1.5">Ready to get started?</h3>
               <p className="text-slate-light text-sm">Our team responds within minutes on WhatsApp — fastest way to get a quote.</p>
             </div>
             <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 shrink-0">

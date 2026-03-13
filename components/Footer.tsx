@@ -18,7 +18,7 @@ export default function Footer() {
                   <circle cx="8" cy="2" r="1.5" fill="#F59E0B" />
                 </svg>
               </div>
-              <span className="font-display text-xl text-ink">
+              <span className="text-xl text-ink">
                 Galaxy<span className="text-accent">Database</span>
               </span>
             </div>
@@ -48,7 +48,7 @@ export default function Footer() {
 
           {/* Quick links */}
           <div>
-            <h4 className="font-body font-semibold text-ink text-sm mb-5">Quick Links</h4>
+            <h4 className="font-semibold text-ink text-sm mb-5">Quick Links</h4>
             <ul className="space-y-3">
               {['Categories', 'Why Us', 'Services', 'Contact'].map((link) => (
                 <li key={link}>
@@ -65,7 +65,7 @@ export default function Footer() {
 
           {/* Contact */}
           <div>
-            <h4 className="font-body font-semibold text-ink text-sm mb-5">Contact</h4>
+            <h4 className="font-semibold text-ink text-sm mb-5">Contact</h4>
             <ul className="space-y-3">
               <li>
                 <a href={`${WA_BASE}`} target="_blank" rel="noopener noreferrer" className="text-slate-light text-sm hover:text-[#25D366] transition-colors flex items-center gap-2">
@@ -92,7 +92,7 @@ export default function Footer() {
 
         {/* Bottom bar */}
         <div className="border-t border-ink/5 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-slate-light text-xs font-mono">
+          <p className="text-slate-light text-xs">
             © {year} Galaxy Database. All rights reserved.
           </p>
           <p className="text-slate-light text-xs">

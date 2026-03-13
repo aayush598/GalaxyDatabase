@@ -8,9 +8,11 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        display: ['var(--font-display)', 'serif'],
-        body: ['var(--font-body)', 'sans-serif'],
-        mono: ['var(--font-mono)', 'monospace'],
+        sans: ['Britti Sans', 'Arial', 'sans-serif'],
+        display: ['var(--font-display)', 'Arial', 'sans-serif'],
+        body: ['var(--font-body)', 'Arial', 'sans-serif'],
+        mono: ['var(--font-mono)', 'Arial', 'sans-serif'],
+        britti: ['Britti Sans', 'Arial', 'sans-serif'],
       },
       colors: {
         ink: '#0A0A0F',
