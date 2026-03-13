@@ -23,7 +23,7 @@ export default function Footer() {
               </span>
             </div>
             <p className="text-slate-light text-sm leading-relaxed max-w-xs mb-6">
-              India's trusted source for premium, verified B2B & B2C lead databases. Updated every 3 months for maximum accuracy.
+              India&apos;s trusted source for premium, verified B2B &amp; B2C lead databases. Updated daily for maximum accuracy.
             </p>
             <div className="flex gap-3">
               <a

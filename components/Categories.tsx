@@ -258,7 +258,7 @@ export default function Categories() {
             </h2>
           </div>
           <p className="text-[#6B6B8A] text-base max-w-sm leading-relaxed lg:text-right">
-            Verified, 3-month updated Excel databases. Each card shows exactly what's included — enquire directly on WhatsApp.
+            Verified, daily updated Excel databases. Each card shows exactly what's included — enquire directly on WhatsApp.
           </p>
         </div>
 

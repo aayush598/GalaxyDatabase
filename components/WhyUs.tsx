@@ -104,7 +104,7 @@ function RefreshVisual() {
         {/* Center calendar badge */}
         <div className="absolute inset-[26px] rounded-xl bg-white flex flex-col items-center justify-center border border-ink/5 group-hover:border-accent/40 transition-all duration-500 shadow-sm">
           <div className="text-[9px] font-mono text-slate-light uppercase tracking-widest mb-0.5">Refresh</div>
-          <div className="font-display text-base text-ink leading-none">90d</div>
+          <div className="font-display text-base text-ink leading-none">1d</div>
         </div>
 
         {/* Tick marks */}
@@ -459,8 +459,8 @@ function StatBlock({ num, label, sub }: { num: string; label: string; sub: strin
 ───────────────────────────────────────────────────────── */
 const features = [
   {
-    title: '3-Month Updated Data',
-    description: 'All databases are refreshed every 90 days ensuring maximum accuracy and deliverability across every campaign you run.',
+    title: 'Daily Updated Data',
+    description: 'All databases are refreshed daily ensuring maximum accuracy and deliverability across every campaign you run.',
     tag: 'Freshness',
     visual: RefreshVisual,
     accent: 'text-accent',

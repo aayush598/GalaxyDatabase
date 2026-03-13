@@ -381,7 +381,7 @@ export default function Hero() {
               <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-500" />
             </span>
             <span className="text-[12px] font-mono font-semibold text-blue-700 uppercase tracking-widest">
-              3-Month Updated · Premium Quality Data
+              Daily File Updated · Premium Quality Data
             </span>
           </div>
         </div>
