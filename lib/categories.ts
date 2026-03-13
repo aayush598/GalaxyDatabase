@@ -368,6 +368,16 @@ export const ALL_CATEGORIES: Category[] = [
 export const FEATURED_CATEGORIES = ALL_CATEGORIES.slice(0, 6)
 export const REMAINING_CATEGORIES = ALL_CATEGORIES.slice(6)
 
+/* ─── UNIFIED — all 10 categories merged into one flat array ─── */
+export interface UnifiedCategory {
+    id: number; title: string; sector: string; accentColor: string
+    description: string; subItems: string[]; records: string; idealFor: string
+}
+export const ALL_LEAD_CATEGORIES: UnifiedCategory[] = [
+    ...LEAD_CATEGORIES,
+    ...BUSINESS_CATEGORIES,
+]
+
 /* ─── Accent palette ─────────────────────────────────────────── */
 export const palette: Record<
     string,
@@ -378,7 +388,7 @@ export const palette: Record<
     emerald: { dot: 'bg-emerald-500', tag: 'bg-emerald-50 text-emerald-700 border-emerald-100', record: 'text-emerald-600', bar: 'bg-emerald-400', btn: 'bg-emerald-600 hover:bg-emerald-700 shadow-emerald-600/20', ring: 'hover:ring-emerald-200', itemDot: 'bg-emerald-400' },
     rose: { dot: 'bg-rose-500', tag: 'bg-rose-50 text-rose-700 border-rose-100', record: 'text-rose-600', bar: 'bg-rose-400', btn: 'bg-rose-600 hover:bg-rose-700 shadow-rose-600/20', ring: 'hover:ring-rose-200', itemDot: 'bg-rose-400' },
     amber: { dot: 'bg-amber-500', tag: 'bg-amber-50 text-amber-700 border-amber-100', record: 'text-amber-600', bar: 'bg-amber-400', btn: 'bg-amber-500 hover:bg-amber-600 shadow-amber-500/20', ring: 'hover:ring-amber-200', itemDot: 'bg-amber-400' },
-    slate: { dot: 'bg-slate-400', tag: 'bg-slate-50 text-slate-600 border-slate-200', record: 'text-slate-500', bar: 'bg-slate-300', btn: 'bg-slate-600 hover:bg-slate-700 shadow-slate-600/20', ring: 'hover:ring-slate-100', itemDot: 'bg-slate-300' },
+    slate: { dot: 'bg-slate-500', tag: 'bg-slate-50 text-slate-700 border-slate-200', record: 'text-slate-600', bar: 'bg-slate-400', btn: 'bg-slate-700 hover:bg-slate-800 shadow-slate-700/20', ring: 'hover:ring-slate-200', itemDot: 'bg-slate-400' },
     teal: { dot: 'bg-teal-500', tag: 'bg-teal-50 text-teal-700 border-teal-100', record: 'text-teal-600', bar: 'bg-teal-400', btn: 'bg-teal-600 hover:bg-teal-700 shadow-teal-600/20', ring: 'hover:ring-teal-200', itemDot: 'bg-teal-400' },
     indigo: { dot: 'bg-indigo-500', tag: 'bg-indigo-50 text-indigo-700 border-indigo-100', record: 'text-indigo-600', bar: 'bg-indigo-400', btn: 'bg-indigo-600 hover:bg-indigo-700 shadow-indigo-600/20', ring: 'hover:ring-indigo-200', itemDot: 'bg-indigo-400' },
     green: { dot: 'bg-green-500', tag: 'bg-green-50 text-green-700 border-green-100', record: 'text-green-600', bar: 'bg-green-400', btn: 'bg-green-600 hover:bg-green-700 shadow-green-600/20', ring: 'hover:ring-green-200', itemDot: 'bg-green-400' },
