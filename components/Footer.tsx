@@ -74,7 +74,7 @@ export default function Footer() {
               </li>
               <li>
                 <span className="text-slate-light text-sm flex items-start gap-2">
-                  <span className="text-slate mt-0.5">📞</span>
+                  <span className="text-brand-slate mt-0.5">📞</span>
                   <span>
                     +91 62677 31901<br />
                     +91 88896 49086

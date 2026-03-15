@@ -56,7 +56,7 @@ function CountUpStat({
       <div className="britti-special text-3xl md:text-4xl text-ink mb-1 tabular-nums">
         {isNumeric ? display.toLocaleString() : target}{suffix}
       </div>
-      <div className="text-sm font-semibold text-slate mb-0.5">{label}</div>
+      <div className="text-sm font-semibold text-brand-slate mb-0.5">{label}</div>
       {sub && <div className="text-xs text-slate-light uppercase tracking-widest">{sub}</div>}
     </div>
   )
@@ -305,7 +305,7 @@ function ExcelVisual() {
             <div className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
             <span className="text-[8px] text-slate-light">CRM-Ready</span>
           </div>
-          <span className="text-[8px] text-slate">xlsx ↓</span>
+          <span className="text-[8px] text-brand-slate">xlsx ↓</span>
         </div>
       </div>
     </div>
@@ -448,7 +448,7 @@ function StatBlock({ num, label, sub }: { num: string; label: string; sub: strin
     <div className="text-center p-7 rounded-2xl bg-white border border-ink/5 relative overflow-hidden group hover:-translate-y-1 transition-transform duration-300 shadow-sm">
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_0%,rgba(59,130,246,0.08),transparent_60%)] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
       <div className="britti-special text-3xl md:text-4xl text-ink mb-1.5 relative z-10">{num}</div>
-      <div className="text-sm font-semibold text-slate mb-0.5 relative z-10">{label}</div>
+      <div className="text-sm font-semibold text-brand-slate mb-0.5 relative z-10">{label}</div>
       <div className="text-[10px] text-slate-light uppercase tracking-widest relative z-10">{sub}</div>
     </div>
   )

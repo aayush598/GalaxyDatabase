@@ -4,6 +4,7 @@ module.exports = {
     './pages/**/*.{js,ts,jsx,tsx,mdx}',
     './components/**/*.{js,ts,jsx,tsx,mdx}',
     './app/**/*.{js,ts,jsx,tsx,mdx}',
+    './lib/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
     extend: {
@@ -17,7 +18,7 @@ module.exports = {
       colors: {
         ink: '#0A0A0F',
         'ink-soft': '#1A1A2E',
-        slate: '#2D2D44',
+        'brand-slate': '#2D2D44',
         'slate-light': '#4A4A6A',
         silver: '#9999BB',
         'silver-light': '#C8C8E0',
@@ -27,7 +28,7 @@ module.exports = {
         'accent-vivid': '#2563EB',
         gold: '#F59E0B',
         'gold-light': '#FCD34D',
-        emerald: '#10B981',
+        'brand-emerald': '#10B981',
         coral: '#F43F5E',
       },
       animation: {
