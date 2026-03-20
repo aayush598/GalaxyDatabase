@@ -15,11 +15,11 @@ import {
     JewellersArt,
     GarmentArt,
     RestaurantArt,
-    LogoIcon,
     ArrowLeft,
     SearchIcon,
     MailIcon
 } from '@/components/icons'
+import Image from 'next/image'
 
 const ARTS = [RealEstateArt, AutomobileArt, EducationArt, FinanceArt, BusinessArt, HomeArt, ConsumerArt, JewellersArt, GarmentArt, RestaurantArt]
 
@@ -158,9 +158,8 @@ export default function CategoriesPage() {
                 }`}>
                 <div className="max-w-7xl mx-auto px-6 lg:px-8 h-16 flex items-center justify-between">
                     <Link href="/" className="flex items-center gap-3 group">
-                        <div className="w-8 h-8 rounded-lg bg-[#0A0A0F] flex items-center justify-center group-hover:bg-blue-600 transition-colors duration-300">
-                            <LogoIcon />                        </div>
-                        <span className="text-lg text-[#0A0A0F] tracking-tight">Galaxy<span className="text-blue-600">Database</span></span>
+                        <Image src="/logo.jpeg" alt="Galaxy Connect Logo" width={36} height={36} className="w-9 h-9 rounded-lg object-cover shadow-sm" />
+                        <span className="text-lg text-[#0A0A0F] tracking-tight">Galaxy<span className="text-blue-600">Connect</span></span>
                     </Link>
                     <div className="flex items-center gap-4">
                         <Link href="/" className="text-sm text-slate-500 hover:text-[#0A0A0F] transition-colors flex items-center gap-1.5 group">
@@ -256,8 +255,8 @@ export default function CategoriesPage() {
                                 className="flex items-center gap-2.5 px-7 py-3.5 rounded-xl bg-[#25D366] text-white text-sm font-semibold hover:bg-[#1fba59] transition-all duration-300 shadow-lg shadow-[#25D366]/20 whitespace-nowrap">
                                 <WAIcon size={16} />Request Custom Data
                             </a>
-                            <a href="mailto:Galaxydatabasee@gmail.com" className="flex items-center justify-center gap-2 text-[13px] text-slate-500 hover:text-[#0A0A0F] font-medium transition-colors">
-                                <MailIcon size={14} />                                Galaxydatabasee@gmail.com
+                            <a href="mailto:galaxyconnect@gmail.com" className="flex items-center justify-center gap-2 text-[13px] text-slate-500 hover:text-[#0A0A0F] font-medium transition-colors">
+                                <MailIcon size={14} />                                galaxyconnect@gmail.com
                             </a>
                         </div>
                     </div>
@@ -267,7 +266,7 @@ export default function CategoriesPage() {
             {/* Footer */}
             <footer className="border-t border-[#EAEAE6] py-8">
                 <div className="max-w-7xl mx-auto px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-                    <span className="text-[12px] text-slate-400">© {new Date().getFullYear()} Galaxy Database. All rights reserved.</span>
+                    <span className="text-[12px] text-slate-400">© {new Date().getFullYear()} Galaxy Connect. All rights reserved.</span>
                     <Link href="/" className="text-[12px] text-slate-400 hover:text-[#0A0A0F] transition-colors">← Back to homepage</Link>
                 </div>
             </footer>

@@ -461,7 +461,7 @@ export default function Hero() {
                   <div className="w-2 h-2 rounded-full bg-emerald-400" />
                   <div className="h-2 w-28 rounded-full bg-[#EAEAE6]" />
                 </div>
-                <div className="text-[11px] text-slate-300">galaxydatabase.in</div>
+                <div className="text-[11px] text-slate-300">galaxyconnect.in</div>
               </div>
 
               {/* Video placeholder content */}
@@ -506,7 +506,7 @@ export default function Hero() {
 
                   <div className="text-center">
                     <p className="britti-special text-2xl text-[#0A0A0F] mb-2">
-                      See Galaxy Database in Action
+                      See Galaxy Connect in Action
                     </p>
                     <p className="text-[#6B6B8A] text-sm max-w-md leading-relaxed">
                       Watch how thousands of Indian businesses use our premium leads to grow their outreach and close more deals

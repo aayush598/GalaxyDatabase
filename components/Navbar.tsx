@@ -1,6 +1,7 @@
 'use client'
 import { useState, useEffect } from 'react'
-import { LogoIcon, WhatsAppIcon as WAIcon } from './icons'
+import { WhatsAppIcon as WAIcon } from './icons'
+import Image from 'next/image'
 
 const WA_NUMBER = '916260712882'
 const WA_BASE = `https://wa.me/${WA_NUMBER}`
@@ -26,11 +27,9 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <a href="#" className="flex items-center gap-3 group">
-            <div className="w-8 h-8 rounded-lg bg-accent flex items-center justify-center group-hover:bg-accent-vivid transition-colors duration-300 shadow-sm shadow-accent/20">
-              <LogoIcon />
-            </div>
+            <Image src="/logo.jpeg" alt="Galaxy Connect" width={36} height={36} className="w-9 h-9 rounded-lg object-cover shadow-sm transition-transform duration-300 group-hover:scale-105" />
             <span className="text-lg text-ink tracking-tight">
-              Galaxy<span className="text-accent">Database</span>
+              Galaxy<span className="text-accent">Connect</span>
             </span>
           </a>
 
