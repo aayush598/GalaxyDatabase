@@ -542,7 +542,7 @@ export default function WhyUs() {
           <div>
             <div className="tag-chip bg-ink/5 text-slate-light border border-ink/10 inline-flex mb-5">
               <span className="w-1.5 h-1.5 rounded-full bg-gold inline-block" />
-              Why Galaxy Database
+              Why Galaxy Connect
             </div>
             <h2 className="britti-special text-4xl md:text-5xl text-ink leading-[1.1] tracking-tight">
               The most trusted
@@ -558,7 +558,7 @@ export default function WhyUs() {
               We invest in continuous data verification and regular updates so you never waste a call.
             </p>
             <p className="text-slate-light text-base leading-relaxed">
-              From solo consultants to large enterprises — businesses across India rely on Galaxy Database to power their outreach and grow faster.
+              From solo consultants to large enterprises — businesses across India rely on Galaxy Connect to power their outreach and grow faster.
             </p>
           </div>
         </div>

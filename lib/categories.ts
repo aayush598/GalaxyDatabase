@@ -1,5 +1,5 @@
 /* ═══════════════════════════════════════════════════════════════════
-   Galaxy Database — Categories Data Layer
+   Galaxy Connect — Categories Data Layer
    Two distinct category types:
    1. LEAD_CATEGORIES  — intent-based leads (sub-items listed in WA msg)
    2. BUSINESS_CATEGORIES — business directory / B2B lists
@@ -13,7 +13,7 @@ export const WA_BASE = `https://wa.me/${WA_NUMBER}`
 export function buildWALink(title: string, items: string[]): string {
     const bullet = items.map((item) => `• ${item}`).join('\n')
     const msg =
-        `Hello! I'm interested in the *${title}* database from Galaxy Database.\n\n` +
+        `Hello! I'm interested in the *${title}* database from Galaxy Connect.\n\n` +
         `I'd like details & pricing for:\n${bullet}\n\n` +
         `Could you please share a sample file and pricing?`
     return `${WA_BASE}?text=${encodeURIComponent(msg)}`
@@ -21,7 +21,7 @@ export function buildWALink(title: string, items: string[]): string {
 
 export function getWALink(categoryTitle: string): string {
     const msg = encodeURIComponent(
-        `Hello! I'm interested in the *${categoryTitle}* database from Galaxy Database. Could you please share pricing and a sample file?`
+        `Hello! I'm interested in the *${categoryTitle}* database from Galaxy Connect. Could you please share pricing and a sample file?`
     )
     return `${WA_BASE}?text=${msg}`
 }

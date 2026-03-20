@@ -1,6 +1,8 @@
 const WA_NUMBER = '916260712882'
 const WA_BASE = `https://wa.me/${WA_NUMBER}`
 
+import Image from 'next/image'
+
 export default function Footer() {
   const year = new Date().getFullYear()
 
@@ -11,15 +13,9 @@ export default function Footer() {
           {/* Brand */}
           <div className="md:col-span-2">
             <div className="flex items-center gap-3 mb-4">
-              <div className="w-9 h-9 rounded-xl bg-accent flex items-center justify-center">
-                <svg width="18" height="18" viewBox="0 0 16 16" fill="none">
-                  <circle cx="8" cy="8" r="3" fill="white" />
-                  <circle cx="8" cy="8" r="6" stroke="white" strokeWidth="1.5" fill="none" strokeDasharray="3 2" />
-                  <circle cx="8" cy="2" r="1.5" fill="#F59E0B" />
-                </svg>
-              </div>
+              <Image src="/logo.jpeg" alt="Galaxy Connect Logo" width={40} height={40} className="w-10 h-10 rounded-xl object-cover shadow-sm" />
               <span className="text-xl text-ink">
-                Galaxy<span className="text-accent">Database</span>
+                Galaxy<span className="text-accent">Connect</span>
               </span>
             </div>
             <p className="text-slate-light text-sm leading-relaxed max-w-xs mb-6">
@@ -38,7 +34,7 @@ export default function Footer() {
                 WhatsApp
               </a>
               <a
-                href="mailto:Galaxydatabasee@gmail.com"
+                href="mailto:galaxyconnect@gmail.com"
                 className="flex items-center gap-2 px-4 py-2.5 rounded-full border border-ink/10 text-slate-light text-xs font-medium hover:border-ink/20 hover:text-ink transition-colors"
               >
                 Email Us
@@ -53,13 +49,29 @@ export default function Footer() {
               {['Categories', 'Why Us', 'Services', 'Contact'].map((link) => (
                 <li key={link}>
                   <a
-                    href={`#${link.toLowerCase().replace(' ', '-')}`}
+                    href={`/#${link.toLowerCase().replace(' ', '-')}`}
                     className="text-slate-light text-sm hover:text-ink transition-colors duration-200"
                   >
                     {link}
                   </a>
                 </li>
               ))}
+              <li>
+                <a
+                  href="/terms-and-conditions"
+                  className="text-slate-light text-sm hover:text-ink transition-colors duration-200"
+                >
+                  Terms & Conditions
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/refund-policy"
+                  className="text-slate-light text-sm hover:text-ink transition-colors duration-200"
+                >
+                  Refund Policy
+                </a>
+              </li>
             </ul>
           </div>
 
@@ -82,8 +94,8 @@ export default function Footer() {
                 </span>
               </li>
               <li>
-                <a href="mailto:Galaxydatabasee@gmail.com" className="text-slate-light text-sm hover:text-ink transition-colors flex items-center gap-2">
-                  <span>✉️</span> Galaxydatabasee@gmail.com
+                <a href="mailto:galaxyconnect@gmail.com" className="text-slate-light text-sm hover:text-ink transition-colors flex items-center gap-2">
+                  <span>✉️</span> galaxyconnect@gmail.com
                 </a>
               </li>
             </ul>
@@ -93,7 +105,7 @@ export default function Footer() {
         {/* Bottom bar */}
         <div className="border-t border-ink/5 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-slate-light text-xs">
-            © {year} Galaxy Database. All rights reserved.
+            © {year} Galaxy Connect. All rights reserved.
           </p>
           <p className="text-slate-light text-xs">
             Premium quality data for Indian businesses
