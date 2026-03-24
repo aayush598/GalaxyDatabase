@@ -1,7 +1,7 @@
 'use client'
 import { useEffect, useRef, useState } from 'react'
 
-const WA_BASE = 'https://wa.me/916260712882'
+const WA_BASE = 'https://wa.me/919179569006'
 const waLink = (service: string) =>
   `${WA_BASE}?text=${encodeURIComponent(`Hello! I'm interested in your *${service}* service. Could you please share more details and pricing?`)}`
 
@@ -560,7 +560,7 @@ export default function Services() {
                 className="flex items-center gap-2.5 px-6 py-3 rounded-xl bg-[#25D366] text-white text-sm font-semibold hover:bg-[#1fba59] transition-all duration-300 shadow-sm hover:shadow-md wa-pulse whitespace-nowrap"
               >
                 <WAIcon size={16} />
-                +91 62607 12882
+                +91 91795 69006
               </a>
               <a
                 href="mailto:support@galaxyconnect.in"

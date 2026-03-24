@@ -284,7 +284,7 @@ export default function CategoriesPage() {
               Back to Home
             </Link>
             <a
-              href={`https://wa.me/916260712882?text=${encodeURIComponent("Hello! I'd like to enquire about your database categories.")}`}
+              href={`https://wa.me/919179569006?text=${encodeURIComponent("Hello! I'd like to enquire about your database categories.")}`}
               target="_blank"
               rel="noopener noreferrer"
               className="hidden sm:flex items-center gap-2 px-4 py-2 rounded-full bg-[#0A0A0F] text-white text-sm font-medium hover:bg-blue-600 transition-all duration-300"
@@ -423,7 +423,7 @@ export default function CategoriesPage() {
             </div>
             <div className="flex flex-col gap-3 shrink-0">
               <a
-                href={`https://wa.me/916260712882?text=${encodeURIComponent("Hello! I need a custom database. Can you help me source it?")}`}
+                href={`https://wa.me/919179569006?text=${encodeURIComponent("Hello! I need a custom database. Can you help me source it?")}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2.5 px-7 py-3.5 rounded-xl bg-[#25D366] text-white text-sm font-semibold hover:bg-[#1fba59] transition-all duration-300 shadow-lg shadow-[#25D366]/20 whitespace-nowrap"

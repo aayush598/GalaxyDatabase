@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { WhatsAppIcon as WAIcon } from "./icons";
 import Image from "next/image";
 
-const WA_NUMBER = "916260712882";
+const WA_NUMBER = "919179569006";
 const WA_BASE = `https://wa.me/${WA_NUMBER}`;
 
 export default function Navbar() {
@@ -18,11 +18,10 @@ export default function Navbar() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled
           ? "bg-white/92 backdrop-blur-lg border-b border-[#EAEAE6] shadow-[0_1px_12px_rgba(0,0,0,0.06)]"
           : "bg-transparent"
-      }`}
+        }`}
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">

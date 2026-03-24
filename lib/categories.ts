@@ -6,7 +6,7 @@
    Original 13 legacy categories retained for backward compatibility.
 ═══════════════════════════════════════════════════════════════════ */
 
-export const WA_NUMBER = '916260712882'
+export const WA_NUMBER = '919179569006'
 export const WA_BASE = `https://wa.me/${WA_NUMBER}`
 
 /* ─── Helper ─────────────────────────────────────────────────── */

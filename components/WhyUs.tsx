@@ -573,7 +573,7 @@ export default function WhyUs() {
         {/* ── Metrics strip ── */}
         <div className="animate-on-scroll mt-16 grid grid-cols-2 md:grid-cols-4 gap-4">
           <CountUpStat target={5000} suffix="+" label="Happy Clients" sub="Across India" delay={0} />
-          <CountUpStat target={13} suffix="+" label="Data Categories" sub="And growing" delay={100} />
+          <CountUpStat target={50} suffix="+" label="Data Categories" sub="And growing" delay={100} />
           <CountUpStat target={99} suffix="%" label="Data Accuracy" sub="Verified entries" delay={200} />
           <CountUpStat target="24/7" label="Support" sub="Via WhatsApp" delay={300} />
         </div>

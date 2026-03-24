@@ -1,4 +1,4 @@
-const WA_NUMBER = "916260712882";
+const WA_NUMBER = "919179569006";
 const WA_BASE = `https://wa.me/${WA_NUMBER}`;
 
 import Image from "next/image";
@@ -101,7 +101,7 @@ export default function Footer() {
                   rel="noopener noreferrer"
                   className="text-slate-light text-sm hover:text-[#25D366] transition-colors flex items-center gap-2"
                 >
-                  <span className="text-[#25D366]">📱</span> +91 62607 12882
+                  <span className="text-[#25D366]">📱</span> +91 91795 69006
                 </a>
               </li>
               <li>

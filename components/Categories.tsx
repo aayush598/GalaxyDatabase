@@ -308,7 +308,6 @@ export default function Categories() {
                       <div key={c} className={`w-5 h-5 rounded-full ${c} border-2 border-white shadow-sm`} />
                     ))}
                   </div>
-                  <span className="text-[12px] text-slate-500 font-semibold">{ALL_LEAD_CATEGORIES.length} total databases</span>
                 </div>
                 <h3 className="text-2xl md:text-3xl text-[#0A0A0F] mb-2">
                   Browse all databases &amp; filter by sector
@@ -325,7 +324,7 @@ export default function Categories() {
                   View All Categories
                   <ArrowRight size={15} className="group-hover:translate-x-0.5 transition-transform" />                </Link>
                 <a
-                  href={`https://wa.me/916260712882?text=${encodeURIComponent("Hello! I'd like to see all available database categories and pricing.")}`}
+                  href={`https://wa.me/919179569006?text=${encodeURIComponent("Hello! I'd like to see all available database categories and pricing.")}`}
                   target="_blank" rel="noopener noreferrer"
                   className="flex items-center gap-2 text-[13px] text-[#1a9950] font-semibold hover:text-[#25D366] transition-colors"
                 >

@@ -2,7 +2,7 @@
 import { useEffect, useRef, useState } from "react";
 import { WhatsAppIcon as WAIcon, ArrowRight, PlayIcon } from "./icons";
 
-const WA_NUMBER = "916260712882";
+const WA_NUMBER = "919179569006";
 const WA_BASE = `https://wa.me/${WA_NUMBER}`;
 const WA_MSG = encodeURIComponent(
   "Hello! I'm interested in your premium database services. Could you please tell me more about the available lead categories and pricing?",
