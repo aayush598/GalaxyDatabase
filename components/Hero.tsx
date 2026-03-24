@@ -1,98 +1,108 @@
-'use client'
-import { useEffect, useRef, useState } from 'react'
-import { WhatsAppIcon as WAIcon, ArrowRight, PlayIcon } from './icons'
+"use client";
+import { useEffect, useRef, useState } from "react";
+import { WhatsAppIcon as WAIcon, ArrowRight, PlayIcon } from "./icons";
 
-const WA_NUMBER = '916260712882'
-const WA_BASE = `https://wa.me/${WA_NUMBER}`
+const WA_NUMBER = "916260712882";
+const WA_BASE = `https://wa.me/${WA_NUMBER}`;
 const WA_MSG = encodeURIComponent(
-  "Hello! I'm interested in your premium database services. Could you please tell me more about the available lead categories and pricing?"
-)
+  "Hello! I'm interested in your premium database services. Could you please tell me more about the available lead categories and pricing?",
+);
 
 /* ═══════════════════════════════════════════════════════
    CANVAS — light-mode animated background
    Soft floating orbs + fine mesh + subtle drift lines
 ═══════════════════════════════════════════════════════ */
 function LightCanvas() {
-  const ref = useRef<HTMLCanvasElement>(null)
+  const ref = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
-    const canvas = ref.current
-    if (!canvas) return
-    const ctx = canvas.getContext('2d')
-    if (!ctx) return
+    const canvas = ref.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return;
 
-    let raf: number
-    let W = 0, H = 0
-    let mx = 0, my = 0
+    let raf: number;
+    let W = 0,
+      H = 0;
+    let mx = 0,
+      my = 0;
 
     /* ── Orb definition ── */
     interface Orb {
-      x: number; y: number
-      vx: number; vy: number
-      r: number          // draw radius
-      opacity: number
-      color: string      // rgb string
+      x: number;
+      y: number;
+      vx: number;
+      vy: number;
+      r: number; // draw radius
+      opacity: number;
+      color: string; // rgb string
     }
 
     /* ── Mesh node ── */
     interface Node {
-      x: number; y: number
-      vx: number; vy: number
+      x: number;
+      y: number;
+      vx: number;
+      vy: number;
     }
 
     /* ── Drift line (horizontal sweep) ── */
     interface DriftLine {
-      y: number; progress: number; speed: number; alpha: number; width: number
+      y: number;
+      progress: number;
+      speed: number;
+      alpha: number;
+      width: number;
     }
 
     // Pastel-toned orb colours — visible on white/cream
     const ORB_COLORS = [
-      '99,143,246',   // soft blue
-      '168,139,250',  // soft violet
-      '251,191,36',   // warm amber
-      '52,211,153',   // soft emerald
-      '251,113,133',  // soft rose
-    ]
+      "99,143,246", // soft blue
+      "168,139,250", // soft violet
+      "251,191,36", // warm amber
+      "52,211,153", // soft emerald
+      "251,113,133", // soft rose
+    ];
 
-    let orbs: Orb[] = []
-    let nodes: Node[] = []
-    let driftLines: DriftLine[] = []
-    let lastDrift = 0
-    let t = 0
+    let orbs: Orb[] = [];
+    let nodes: Node[] = [];
+    let driftLines: DriftLine[] = [];
+    let lastDrift = 0;
+    let t = 0;
 
     const resize = () => {
-      W = canvas.offsetWidth
-      H = canvas.offsetHeight
-      canvas.width = W
-      canvas.height = H
-      mx = W / 2
-      my = H / 2
-      initOrbs()
-      initNodes()
-    }
+      W = canvas.offsetWidth;
+      H = canvas.offsetHeight;
+      canvas.width = W;
+      canvas.height = H;
+      mx = W / 2;
+      my = H / 2;
+      initOrbs();
+      initNodes();
+    };
 
     const initOrbs = () => {
-      const count = Math.min(Math.floor((W * H) / 90_000) + 5, 9)
+      const count = Math.min(Math.floor((W * H) / 90_000) + 5, 9);
       orbs = Array.from({ length: count }, (_, i) => ({
         x: Math.random() * W,
         y: Math.random() * H,
         vx: (Math.random() - 0.5) * 0.25,
-        vy: (Math.random() - 0.5) * 0.20,
+        vy: (Math.random() - 0.5) * 0.2,
         r: Math.random() * 180 + 100,
         opacity: Math.random() * 0.13 + 0.07,
         color: ORB_COLORS[i % ORB_COLORS.length],
-      }))
-    }
+      }));
+    };
 
     const initNodes = () => {
-      const count = Math.floor((W * H) / 12_000)
+      const count = Math.floor((W * H) / 12_000);
       nodes = Array.from({ length: count }, () => ({
         x: Math.random() * W,
         y: Math.random() * H,
         vx: (Math.random() - 0.5) * 0.22,
         vy: (Math.random() - 0.5) * 0.22,
-      }))
-    }
+      }));
+    };
 
     const spawnDriftLine = () => {
       driftLines.push({
@@ -101,197 +111,209 @@ function LightCanvas() {
         speed: Math.random() * 0.0015 + 0.0008,
         alpha: Math.random() * 0.06 + 0.02,
         width: Math.random() * 0.5 + 0.2,
-      })
-    }
+      });
+    };
 
     const draw = () => {
-      t++
-      ctx.clearRect(0, 0, W, H)
+      t++;
+      ctx.clearRect(0, 0, W, H);
 
       /* ── 1. Soft orbs (additive blur glow on cream bg) ── */
       orbs.forEach((o) => {
         // gentle mouse attraction toward cursor for premium feel
-        const dx = mx - o.x
-        const dy = my - o.y
-        o.vx += dx * 0.000008
-        o.vy += dy * 0.000008
-        o.vx *= 0.998
-        o.vy *= 0.998
-        o.x += o.vx
-        o.y += o.vy
+        const dx = mx - o.x;
+        const dy = my - o.y;
+        o.vx += dx * 0.000008;
+        o.vy += dy * 0.000008;
+        o.vx *= 0.998;
+        o.vy *= 0.998;
+        o.x += o.vx;
+        o.y += o.vy;
 
-        if (o.x < -o.r) o.x = W + o.r
-        if (o.x > W + o.r) o.x = -o.r
-        if (o.y < -o.r) o.y = H + o.r
-        if (o.y > H + o.r) o.y = -o.r
+        if (o.x < -o.r) o.x = W + o.r;
+        if (o.x > W + o.r) o.x = -o.r;
+        if (o.y < -o.r) o.y = H + o.r;
+        if (o.y > H + o.r) o.y = -o.r;
 
         // Gentle breathing
-        const breathe = Math.sin(t * 0.006 + o.x * 0.002) * 0.015 + 1
-        const drawR = o.r * breathe
+        const breathe = Math.sin(t * 0.006 + o.x * 0.002) * 0.015 + 1;
+        const drawR = o.r * breathe;
 
-        const g = ctx.createRadialGradient(o.x, o.y, 0, o.x, o.y, drawR)
-        g.addColorStop(0, `rgba(${o.color},${o.opacity})`)
-        g.addColorStop(0.5, `rgba(${o.color},${o.opacity * 0.4})`)
-        g.addColorStop(1, `rgba(${o.color},0)`)
-        ctx.save()
-        ctx.fillStyle = g
-        ctx.beginPath()
-        ctx.arc(o.x, o.y, drawR, 0, Math.PI * 2)
-        ctx.fill()
-        ctx.restore()
-      })
+        const g = ctx.createRadialGradient(o.x, o.y, 0, o.x, o.y, drawR);
+        g.addColorStop(0, `rgba(${o.color},${o.opacity})`);
+        g.addColorStop(0.5, `rgba(${o.color},${o.opacity * 0.4})`);
+        g.addColorStop(1, `rgba(${o.color},0)`);
+        ctx.save();
+        ctx.fillStyle = g;
+        ctx.beginPath();
+        ctx.arc(o.x, o.y, drawR, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.restore();
+      });
 
       /* ── 2. Mesh nodes + connection lines ── */
       nodes.forEach((n) => {
-        const dx = mx - n.x
-        const dy = my - n.y
-        const d = Math.hypot(dx, dy)
+        const dx = mx - n.x;
+        const dy = my - n.y;
+        const d = Math.hypot(dx, dy);
         // subtle mouse repulsion
         if (d < 120) {
-          n.vx -= (dx / d) * 0.012
-          n.vy -= (dy / d) * 0.012
+          n.vx -= (dx / d) * 0.012;
+          n.vy -= (dy / d) * 0.012;
         }
-        n.vx *= 0.993
-        n.vy *= 0.993
-        n.x += n.vx
-        n.y += n.vy
+        n.vx *= 0.993;
+        n.vy *= 0.993;
+        n.x += n.vx;
+        n.y += n.vy;
 
-        if (n.x < 0) n.x = W
-        if (n.x > W) n.x = 0
-        if (n.y < 0) n.y = H
-        if (n.y > H) n.y = 0
-      })
+        if (n.x < 0) n.x = W;
+        if (n.x > W) n.x = 0;
+        if (n.y < 0) n.y = H;
+        if (n.y > H) n.y = 0;
+      });
 
       // Draw connections
-      ctx.save()
+      ctx.save();
       for (let i = 0; i < nodes.length; i++) {
         for (let j = i + 1; j < nodes.length; j++) {
-          const dx = nodes[i].x - nodes[j].x
-          const dy = nodes[i].y - nodes[j].y
-          const dist = Math.hypot(dx, dy)
+          const dx = nodes[i].x - nodes[j].x;
+          const dy = nodes[i].y - nodes[j].y;
+          const dist = Math.hypot(dx, dy);
           if (dist < 100) {
-            const a = (1 - dist / 100) * 0.08
-            ctx.globalAlpha = a
-            ctx.strokeStyle = 'rgba(99,120,180,1)'
-            ctx.lineWidth = 0.6
-            ctx.beginPath()
-            ctx.moveTo(nodes[i].x, nodes[i].y)
-            ctx.lineTo(nodes[j].x, nodes[j].y)
-            ctx.stroke()
+            const a = (1 - dist / 100) * 0.08;
+            ctx.globalAlpha = a;
+            ctx.strokeStyle = "rgba(99,120,180,1)";
+            ctx.lineWidth = 0.6;
+            ctx.beginPath();
+            ctx.moveTo(nodes[i].x, nodes[i].y);
+            ctx.lineTo(nodes[j].x, nodes[j].y);
+            ctx.stroke();
           }
         }
       }
-      ctx.restore()
+      ctx.restore();
 
       // Node dots
-      ctx.save()
+      ctx.save();
       nodes.forEach((n) => {
-        const twinkle = Math.sin(t * 0.012 + n.x) * 0.25 + 0.75
-        ctx.globalAlpha = 0.22 * twinkle
-        ctx.fillStyle = 'rgba(100,120,200,1)'
-        ctx.beginPath()
-        ctx.arc(n.x, n.y, 1.2, 0, Math.PI * 2)
-        ctx.fill()
-      })
-      ctx.restore()
+        const twinkle = Math.sin(t * 0.012 + n.x) * 0.25 + 0.75;
+        ctx.globalAlpha = 0.22 * twinkle;
+        ctx.fillStyle = "rgba(100,120,200,1)";
+        ctx.beginPath();
+        ctx.arc(n.x, n.y, 1.2, 0, Math.PI * 2);
+        ctx.fill();
+      });
+      ctx.restore();
 
       /* ── 3. Horizontal drift lines ── */
       if (t - lastDrift > 90 + Math.random() * 120) {
-        spawnDriftLine()
-        lastDrift = t
+        spawnDriftLine();
+        lastDrift = t;
       }
-      driftLines = driftLines.filter((l) => l.progress < 1)
+      driftLines = driftLines.filter((l) => l.progress < 1);
       driftLines.forEach((l) => {
-        l.progress = Math.min(l.progress + l.speed, 1)
-        const fadeIn = l.progress < 0.1 ? l.progress / 0.1 : 1
-        const fadeOut = l.progress > 0.7 ? 1 - (l.progress - 0.7) / 0.3 : 1
-        const alpha = l.alpha * fadeIn * fadeOut
-        const x1 = (l.progress - 0.15) * W * 1.3
-        const x2 = l.progress * W * 1.3
+        l.progress = Math.min(l.progress + l.speed, 1);
+        const fadeIn = l.progress < 0.1 ? l.progress / 0.1 : 1;
+        const fadeOut = l.progress > 0.7 ? 1 - (l.progress - 0.7) / 0.3 : 1;
+        const alpha = l.alpha * fadeIn * fadeOut;
+        const x1 = (l.progress - 0.15) * W * 1.3;
+        const x2 = l.progress * W * 1.3;
 
-        const gl = ctx.createLinearGradient(x1, 0, x2, 0)
-        gl.addColorStop(0, `rgba(100,140,230,0)`)
-        gl.addColorStop(0.5, `rgba(100,140,230,${alpha})`)
-        gl.addColorStop(1, `rgba(100,140,230,0)`)
+        const gl = ctx.createLinearGradient(x1, 0, x2, 0);
+        gl.addColorStop(0, `rgba(100,140,230,0)`);
+        gl.addColorStop(0.5, `rgba(100,140,230,${alpha})`);
+        gl.addColorStop(1, `rgba(100,140,230,0)`);
 
-        ctx.save()
-        ctx.strokeStyle = gl
-        ctx.lineWidth = l.width
-        ctx.beginPath()
-        ctx.moveTo(x1, l.y)
-        ctx.lineTo(x2, l.y)
-        ctx.stroke()
-        ctx.restore()
-      })
+        ctx.save();
+        ctx.strokeStyle = gl;
+        ctx.lineWidth = l.width;
+        ctx.beginPath();
+        ctx.moveTo(x1, l.y);
+        ctx.lineTo(x2, l.y);
+        ctx.stroke();
+        ctx.restore();
+      });
 
-      raf = requestAnimationFrame(draw)
-    }
+      raf = requestAnimationFrame(draw);
+    };
 
     const onMove = (e: MouseEvent) => {
-      const r = canvas.getBoundingClientRect()
-      mx = e.clientX - r.left
-      my = e.clientY - r.top
-    }
+      const r = canvas.getBoundingClientRect();
+      mx = e.clientX - r.left;
+      my = e.clientY - r.top;
+    };
 
-    window.addEventListener('resize', resize)
-    window.addEventListener('mousemove', onMove)
-    resize()
-    draw()
+    window.addEventListener("resize", resize);
+    window.addEventListener("mousemove", onMove);
+    resize();
+    draw();
 
     return () => {
-      cancelAnimationFrame(raf)
-      window.removeEventListener('resize', resize)
-      window.removeEventListener('mousemove', onMove)
-    }
-  }, [])
+      cancelAnimationFrame(raf);
+      window.removeEventListener("resize", resize);
+      window.removeEventListener("mousemove", onMove);
+    };
+  }, []);
 
   return (
     <canvas
       ref={ref}
       className="absolute inset-0 w-full h-full pointer-events-none"
     />
-  )
+  );
 }
 
 /* ═══════════════════════════════════════════════════════
    COUNT-UP STAT
 ═══════════════════════════════════════════════════════ */
 function CountUpStat({
-  target, suffix, label, duration = 1800, delay = 0,
+  target,
+  suffix,
+  label,
+  duration = 1800,
+  delay = 0,
 }: {
-  target: number; suffix: string; label: string
-  duration?: number; delay?: number
+  target: number;
+  suffix: string;
+  label: string;
+  duration?: number;
+  delay?: number;
 }) {
-  const [display, setDisplay] = useState(0)
-  const [started, setStarted] = useState(false)
-  const ref = useRef<HTMLDivElement>(null)
+  const [display, setDisplay] = useState(0);
+  const [started, setStarted] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const obs = new IntersectionObserver(
-      ([e]) => { if (e.isIntersecting) setStarted(true) },
-      { threshold: 0.5 }
-    )
-    if (ref.current) obs.observe(ref.current)
-    return () => obs.disconnect()
-  }, [])
+      ([e]) => {
+        if (e.isIntersecting) setStarted(true);
+      },
+      { threshold: 0.5 },
+    );
+    if (ref.current) obs.observe(ref.current);
+    return () => obs.disconnect();
+  }, []);
 
   useEffect(() => {
-    if (!started) return
-    let rafId: number
+    if (!started) return;
+    let rafId: number;
     const timer = setTimeout(() => {
-      let start: number | null = null
+      let start: number | null = null;
       const step = (ts: number) => {
-        if (!start) start = ts
-        const elapsed = ts - start
-        const progress = Math.min(elapsed / duration, 1)
-        const eased = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress)
-        setDisplay(Math.round(eased * target))
-        if (progress < 1) rafId = requestAnimationFrame(step)
-      }
-      rafId = requestAnimationFrame(step)
-    }, delay)
-    return () => { clearTimeout(timer); cancelAnimationFrame(rafId) }
-  }, [started, target, duration, delay])
+        if (!start) start = ts;
+        const elapsed = ts - start;
+        const progress = Math.min(elapsed / duration, 1);
+        const eased = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
+        setDisplay(Math.round(eased * target));
+        if (progress < 1) rafId = requestAnimationFrame(step);
+      };
+      rafId = requestAnimationFrame(step);
+    }, delay);
+    return () => {
+      clearTimeout(timer);
+      cancelAnimationFrame(rafId);
+    };
+  }, [started, target, duration, delay]);
 
   return (
     <div
@@ -303,34 +325,110 @@ function CountUpStat({
       {/* Colour accent top-bar */}
       <span className="absolute top-0 left-1/2 -translate-x-1/2 w-8 h-0.5 rounded-full bg-accent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
       <div className="britti-special text-3xl text-[#0A0A0F] mb-1 tabular-nums leading-none">
-        {display.toLocaleString()}{suffix}
+        {display.toLocaleString()}
+        {suffix}
       </div>
-      <div className="text-[11px] text-slate-400 uppercase tracking-widest">{label}</div>
+      <div className="text-[11px] text-slate-400 uppercase tracking-widest">
+        {label}
+      </div>
     </div>
-  )
+  );
 }
-
 
 /* ═══════════════════════════════════════════════════════
    HERO SECTION
 ═══════════════════════════════════════════════════════ */
+/* ═══════════════════════════════════════════════════════
+   VIDEO PLAYER — with custom play/pause button
+═══════════════════════════════════════════════════════ */
+function VideoPlayer() {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [isPlaying, setIsPlaying] = useState(false);
+
+  const handlePlayClick = () => {
+    if (videoRef.current) {
+      if (videoRef.current.paused) {
+        videoRef.current.play();
+        setIsPlaying(true);
+      } else {
+        videoRef.current.pause();
+        setIsPlaying(false);
+      }
+    }
+  };
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    const handlePlay = () => setIsPlaying(true);
+    const handlePause = () => setIsPlaying(false);
+
+    video.addEventListener("play", handlePlay);
+    video.addEventListener("pause", handlePause);
+
+    return () => {
+      video.removeEventListener("play", handlePlay);
+      video.removeEventListener("pause", handlePause);
+    };
+  }, []);
+
+  return (
+    <div className="relative w-full aspect-video">
+      <video
+        ref={videoRef}
+        className="w-full aspect-video object-cover bg-black"
+        onClick={handlePlayClick}
+      >
+        <source
+          src="https://res.cloudinary.com/dyv9kenuj/video/upload/v1774338588/GalaxyConnect_-_Premium_B2B_Growth_1_dgoqkp.mp4"
+          type="video/mp4"
+        />
+        Your browser does not support the video tag.
+      </video>
+
+      {/* Centered play button overlay - hidden when playing */}
+      {!isPlaying && (
+        <button
+          onClick={handlePlayClick}
+          className="absolute inset-0 flex items-center justify-center group/play hover:opacity-80 transition-opacity"
+        >
+          <div className="w-20 h-20 rounded-full bg-white shadow-[0_8px_32px_rgba(59,130,246,0.22)] border border-[#DBEAFE] flex items-center justify-center group-hover/play:shadow-[0_12px_48px_rgba(59,130,246,0.35)] group-hover/play:scale-105 transition-all duration-300">
+            <div className="w-14 h-14 rounded-full bg-gradient-to-br from-blue-500 to-violet-600 flex items-center justify-center shadow-inner">
+              <PlayIcon size={22} fill="white" className="translate-x-0.5" />
+            </div>
+          </div>
+        </button>
+      )}
+    </div>
+  );
+}
+
 export default function Hero() {
-  const heroRef = useRef<HTMLDivElement>(null)
+  const heroRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const obs = new IntersectionObserver(
-      (entries) => entries.forEach((e) => e.isIntersecting && e.target.classList.add('visible')),
-      { threshold: 0.06 }
-    )
-    heroRef.current?.querySelectorAll('.animate-on-scroll').forEach((el) => obs.observe(el))
-    return () => obs.disconnect()
-  }, [])
+      (entries) =>
+        entries.forEach(
+          (e) => e.isIntersecting && e.target.classList.add("visible"),
+        ),
+      { threshold: 0.06 },
+    );
+    heroRef.current
+      ?.querySelectorAll(".animate-on-scroll")
+      .forEach((el) => obs.observe(el));
+    return () => obs.disconnect();
+  }, []);
 
   return (
     <section
       ref={heroRef}
       className="relative min-h-screen overflow-hidden pt-16 pb-20"
-      style={{ background: 'linear-gradient(160deg, #FFFFFF 0%, #F7F6FF 35%, #EDF4FF 65%, #F5F4F0 100%)' }}
+      style={{
+        background:
+          "linear-gradient(160deg, #FFFFFF 0%, #F7F6FF 35%, #EDF4FF 65%, #F5F4F0 100%)",
+      }}
     >
       {/* ── Static layered gradient blooms ── */}
       <div className="absolute inset-0 pointer-events-none">
@@ -344,8 +442,9 @@ export default function Hero() {
       <div
         className="absolute inset-0 pointer-events-none opacity-40"
         style={{
-          backgroundImage: 'radial-gradient(circle, #C7D2FE 1px, transparent 1px)',
-          backgroundSize: '28px 28px',
+          backgroundImage:
+            "radial-gradient(circle, #C7D2FE 1px, transparent 1px)",
+          backgroundSize: "28px 28px",
         }}
       />
 
@@ -357,13 +456,12 @@ export default function Hero() {
         className="absolute inset-0 pointer-events-none"
         style={{
           background:
-            'radial-gradient(ellipse 110% 90% at 50% 50%, transparent 45%, rgba(245,244,240,0.55) 100%)',
+            "radial-gradient(ellipse 110% 90% at 50% 50%, transparent 45%, rgba(245,244,240,0.55) 100%)",
         }}
       />
 
       {/* ════════════════ CONTENT ════════════════ */}
       <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
-
         {/* ── Trust badge ── */}
         <div className="animate-on-scroll flex justify-center mb-10 pt-14">
           <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-white/80 backdrop-blur-sm border border-[#DBEAFE] shadow-sm">
@@ -382,7 +480,7 @@ export default function Hero() {
           <h1 className="britti-special text-5xl md:text-6xl lg:text-[72px] text-[#0A0A0F] leading-[1.06] tracking-tighter">
             Fuel Your Business
             <br />
-            With{' '}
+            With{" "}
             <span className="britti-gradient italic relative inline-block">
               Premium Leads
             </span>
@@ -392,9 +490,12 @@ export default function Hero() {
         {/* ── Sub-headline ── */}
         <div className="animate-on-scroll delay-200 text-center mb-11">
           <p className="text-[#6B6B8A] text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
-            Verified, regularly-updated B2B &amp; B2C databases across 13+ categories.
-            Doctors, HNI executives, car owners, government employees —{' '}
-            <span className="text-[#3B3B5A] font-medium">all in one place.</span>
+            Verified, regularly-updated B2B &amp; B2C databases across 50+
+            categories. Doctors, HNI executives, car owners, government
+            employees —{" "}
+            <span className="text-[#3B3B5A] font-medium">
+              all in one place.
+            </span>
           </p>
         </div>
 
@@ -409,7 +510,9 @@ export default function Hero() {
           >
             <WAIcon size={20} />
             Chat on WhatsApp
-            <span className="group-hover:translate-x-0.5 transition-transform duration-300 text-white/70">→</span>
+            <span className="group-hover:translate-x-0.5 transition-transform duration-300 text-white/70">
+              →
+            </span>
           </a>
 
           {/* Secondary — scroll */}
@@ -424,14 +527,31 @@ export default function Hero() {
 
         {/* ── Stats — count up ── */}
         <div className="animate-on-scroll delay-400 grid grid-cols-3 gap-4 max-w-2xl mx-auto mb-20">
-          <CountUpStat target={13} suffix="+" label="Lead Categories" duration={1400} delay={0} />
-          <CountUpStat target={3} suffix="M+" label="Updated Records" duration={1800} delay={200} />
-          <CountUpStat target={100} suffix="%" label="Verified Data" duration={1600} delay={400} />
+          <CountUpStat
+            target={13}
+            suffix="+"
+            label="Lead Categories"
+            duration={1400}
+            delay={0}
+          />
+          <CountUpStat
+            target={3}
+            suffix="M+"
+            label="Updated Records"
+            duration={1800}
+            delay={200}
+          />
+          <CountUpStat
+            target={100}
+            suffix="%"
+            label="Verified Data"
+            duration={1600}
+            delay={400}
+          />
         </div>
 
         {/* ── Video section ── */}
         <div className="animate-on-scroll delay-500" id="video-section">
-
           {/* Label */}
           <div className="flex items-center justify-center gap-3 mb-8">
             <div className="h-px flex-1 max-w-[80px] bg-gradient-to-r from-transparent to-[#CBD5FE]" />
@@ -449,7 +569,6 @@ export default function Hero() {
 
             {/* Frame */}
             <div className="relative rounded-2xl overflow-hidden border border-[#DBEAFE] bg-white shadow-[0_8px_48px_rgba(59,130,246,0.12),0_2px_8px_rgba(0,0,0,0.06)]">
-
               {/* Browser-style top bar */}
               <div className="bg-[#F8F8F6] border-b border-[#EAEAE6] px-4 py-3 flex items-center gap-3">
                 <div className="flex gap-1.5">
@@ -461,91 +580,14 @@ export default function Hero() {
                   <div className="w-2 h-2 rounded-full bg-emerald-400" />
                   <div className="h-2 w-28 rounded-full bg-[#EAEAE6]" />
                 </div>
-                <div className="text-[11px] text-slate-300">galaxyconnect.in</div>
+                <div className="text-[11px] text-slate-300">
+                  galaxyconnect.in
+                </div>
               </div>
 
-              {/* Video placeholder content */}
-              <div className="relative aspect-video bg-gradient-to-br from-[#F0F4FF] via-[#EEF2FF] to-[#F5F0FF] flex flex-col items-center justify-center overflow-hidden">
-                {/* Background dot grid */}
-                <div
-                  className="absolute inset-0 opacity-50"
-                  style={{
-                    backgroundImage: 'radial-gradient(circle, #C7D2FE 1px, transparent 1px)',
-                    backgroundSize: '24px 24px',
-                  }}
-                />
-
-                {/* Decorative concentric rings */}
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none">
-                  {[160, 220, 280].map((s) => (
-                    <div
-                      key={s}
-                      className="absolute rounded-full border border-blue-200/50"
-                      style={{ width: s, height: s, top: -s / 2, left: -s / 2 }}
-                    />
-                  ))}
-                </div>
-
-                {/* Floating accent cards */}
-                <div className="absolute top-6 left-6 bg-white/90 backdrop-blur-sm rounded-xl px-3 py-2 shadow-sm border border-[#EAEAE6] flex items-center gap-2">
-                  <div className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-                  <span className="text-[10px] text-slate-500 font-semibold">13+ Categories</span>
-                </div>
-                <div className="absolute top-6 right-6 bg-white/90 backdrop-blur-sm rounded-xl px-3 py-2 shadow-sm border border-[#EAEAE6] flex items-center gap-2">
-                  <div className="w-2 h-2 rounded-full bg-blue-400 animate-pulse" />
-                  <span className="text-[10px] text-slate-500 font-semibold">3M+ Records</span>
-                </div>
-
-                {/* Play button */}
-                <div className="relative z-10 flex flex-col items-center gap-6">
-                  <button className="group/play w-20 h-20 rounded-full bg-white shadow-[0_8px_32px_rgba(59,130,246,0.22)] border border-[#DBEAFE] flex items-center justify-center hover:shadow-[0_12px_48px_rgba(59,130,246,0.35)] hover:scale-105 transition-all duration-300">
-                    <div className="w-14 h-14 rounded-full bg-gradient-to-br from-blue-500 to-violet-600 flex items-center justify-center shadow-inner">
-                      <PlayIcon size={22} fill="white" className="translate-x-0.5" />
-                    </div>
-                  </button>
-
-                  <div className="text-center">
-                    <p className="britti-special text-2xl text-[#0A0A0F] mb-2">
-                      See Galaxy Connect in Action
-                    </p>
-                    <p className="text-[#6B6B8A] text-sm max-w-md leading-relaxed">
-                      Watch how thousands of Indian businesses use our premium leads to grow their outreach and close more deals
-                    </p>
-                  </div>
-
-                  {/* Placeholder notice */}
-                  <div className="flex items-center gap-2 bg-amber-50 border border-amber-200 rounded-full px-4 py-2">
-                    <div className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse" />
-                    <span className="text-[11px] text-amber-600 font-semibold">
-                      Live Sample Video
-                    </span>
-                  </div>
-                </div>
-
-                {/* Bottom gradient overlay */}
-                <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-[#F5F4F0]/60 to-transparent pointer-events-none" />
-              </div>
-
-              {/* ── To use a real video, replace the div above with:
-              <video className="w-full aspect-video object-cover" controls poster="/poster.jpg">
-                <source src="/your-video.mp4" type="video/mp4" />
-              </video>
-              ── */}
+              {/* Video with centered play button overlay */}
+              <VideoPlayer />
             </div>
-          </div>
-
-          {/* WhatsApp nudge below video */}
-          <div className="mt-10 flex flex-col items-center gap-3">
-            <p className="text-slate-400 text-sm">Have questions? We respond within minutes.</p>
-            <a
-              href={`${WA_BASE}?text=${WA_MSG}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2.5 px-6 py-3 rounded-full bg-white border border-[#25D366]/30 text-[#1a9950] text-[13px] font-semibold hover:bg-[#25D366]/5 hover:border-[#25D366]/50 transition-all duration-300 shadow-sm"
-            >
-              <WAIcon size={16} />
-              Chat on WhatsApp Now
-            </a>
           </div>
         </div>
       </div>
@@ -553,8 +595,10 @@ export default function Hero() {
       {/* ── Bottom transition — blends into cream-warm of next section ── */}
       <div
         className="absolute bottom-0 left-0 right-0 h-32 pointer-events-none"
-        style={{ background: 'linear-gradient(to top, #EAE8E2 0%, transparent 100%)' }}
+        style={{
+          background: "linear-gradient(to top, #EAE8E2 0%, transparent 100%)",
+        }}
       />
     </section>
-  )
+  );
 }
