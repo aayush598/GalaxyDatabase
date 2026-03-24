@@ -432,10 +432,10 @@ export default function CategoriesPage() {
                 Request Custom Data
               </a>
               <a
-                href="mailto:galaxyconnect@gmail.com"
+                href="mailto:support@galaxyconnect.in"
                 className="flex items-center justify-center gap-2 text-[13px] text-slate-500 hover:text-[#0A0A0F] font-medium transition-colors"
               >
-                <MailIcon size={14} /> galaxyconnect@gmail.com
+                <MailIcon size={14} /> support@galaxyconnect.in
               </a>
             </div>
           </div>

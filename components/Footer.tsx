@@ -49,7 +49,7 @@ export default function Footer() {
                 WhatsApp
               </a>
               <a
-                href="mailto:galaxyconnect@gmail.com"
+                href="mailto:support@galaxyconnect.in"
                 className="flex items-center gap-2 px-4 py-2.5 rounded-full border border-ink/10 text-slate-light text-xs font-medium hover:border-ink/20 hover:text-ink transition-colors"
               >
                 Email Us
@@ -116,10 +116,10 @@ export default function Footer() {
               </li>
               <li>
                 <a
-                  href="mailto:galaxyconnect@gmail.com"
+                  href="mailto:support@galaxyconnect.in"
                   className="text-slate-light text-sm hover:text-ink transition-colors flex items-center gap-2"
                 >
-                  <span>✉️</span> galaxyconnect@gmail.com
+                  <span>✉️</span> support@galaxyconnect.in
                 </a>
               </li>
             </ul>
