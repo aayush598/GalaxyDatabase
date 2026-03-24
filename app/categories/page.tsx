@@ -15,6 +15,25 @@ import {
   JewellersArt,
   GarmentArt,
   RestaurantArt,
+  ConstructionArt,
+  MedicalArt,
+  ElectronicsArt,
+  BeautyArt,
+  EducationBizArt,
+  RealEstateBizArt,
+  TravelArt,
+  AgricultureArt,
+  FurnitureArt,
+  PrintingArt,
+  IndustrialArt,
+  ElectricalArt,
+  PlasticArt,
+  LogisticsArt,
+  EventsArt,
+  SecurityArt,
+  SportsArt,
+  PetArt,
+  WholesaleArt,
   ArrowLeft,
   SearchIcon,
   MailIcon,
@@ -32,6 +51,25 @@ const ARTS = [
   JewellersArt,
   GarmentArt,
   RestaurantArt,
+  ConstructionArt,
+  MedicalArt,
+  ElectronicsArt,
+  BeautyArt,
+  EducationBizArt,
+  RealEstateBizArt,
+  TravelArt,
+  AgricultureArt,
+  FurnitureArt,
+  PrintingArt,
+  IndustrialArt,
+  ElectricalArt,
+  PlasticArt,
+  LogisticsArt,
+  EventsArt,
+  SecurityArt,
+  SportsArt,
+  PetArt,
+  WholesaleArt,
 ];
 
 /* ── Category Card ───────────────────────────────────────────── */
@@ -123,11 +161,6 @@ function CategoryCard({
             ))}
           </ul>
         </div>
-
-        <p className="text-[11px] text-slate-400 font-mono leading-relaxed">
-          <span className="text-slate-500 font-semibold">Ideal for:</span>{" "}
-          {cat.idealFor}
-        </p>
       </div>
 
       {/* CTA */}
@@ -151,29 +184,21 @@ function CategoryCard({
 function FilterPill({
   label,
   active,
-  count,
   onClick,
 }: {
   label: string;
   active: boolean;
-  count: number;
   onClick: () => void;
 }) {
   return (
     <button
       onClick={onClick}
-      className={`flex items-center gap-1.5 px-4 py-2 rounded-full text-[12px] font-semibold font-mono uppercase tracking-wider transition-all duration-200 border whitespace-nowrap ${
-        active
-          ? "bg-[#0A0A0F] text-white border-[#0A0A0F] shadow-sm"
-          : "bg-white text-slate-500 border-[#E4E4E0] hover:border-blue-300 hover:text-[#0A0A0F]"
-      }`}
+      className={`flex items-center gap-1.5 px-4 py-2 rounded-full text-[12px] font-semibold font-mono uppercase tracking-wider transition-all duration-200 border whitespace-nowrap ${active
+        ? "bg-[#0A0A0F] text-white border-[#0A0A0F] shadow-sm"
+        : "bg-white text-slate-500 border-[#E4E4E0] hover:border-blue-300 hover:text-[#0A0A0F]"
+        }`}
     >
       {label}
-      <span
-        className={`text-[10px] px-1.5 py-0.5 rounded-full font-bold tabular-nums ${active ? "bg-white/20 text-white" : "bg-[#F0F0EC] text-slate-400"}`}
-      >
-        {count}
-      </span>
     </button>
   );
 }
@@ -229,11 +254,10 @@ export default function CategoriesPage() {
     >
       {/* Navbar */}
       <header
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          scrolled
-            ? "bg-white/92 backdrop-blur-lg border-b border-[#EAEAE6] shadow-[0_1px_12px_rgba(0,0,0,0.06)]"
-            : "bg-transparent"
-        }`}
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled
+          ? "bg-white/92 backdrop-blur-lg border-b border-[#EAEAE6] shadow-[0_1px_12px_rgba(0,0,0,0.06)]"
+          : "bg-transparent"
+          }`}
       >
         <div className="max-w-7xl mx-auto px-6 lg:px-8 h-16 flex items-center justify-between">
           <Link href="/" className="flex items-center gap-3 group">
@@ -286,7 +310,7 @@ export default function CategoriesPage() {
             </span>
           </div>
           <h1 className="britti-special text-5xl md:text-6xl text-[#0A0A0F] leading-[1.06] tracking-tight mb-5">
-            {ALL_LEAD_CATEGORIES.length} Premium
+            Premium
             <br />
             <span className="italic britti-gradient">Lead Databases</span>
           </h1>
@@ -297,7 +321,6 @@ export default function CategoriesPage() {
         </div>
         <div className="mt-10 flex flex-wrap gap-4">
           {[
-            { num: String(ALL_LEAD_CATEGORIES.length), label: "Databases" },
             { num: "30L+", label: "Verified records" },
             { num: "Weekly", label: "Update cycle" },
             { num: "~2 min", label: "Delivery time" },
@@ -325,9 +348,6 @@ export default function CategoriesPage() {
               key={s}
               label={s}
               active={activeFilter === s}
-              count={
-                s === "All" ? ALL_LEAD_CATEGORIES.length : sectorCounts[s] || 0
-              }
               onClick={() => setActiveFilter(s)}
             />
           ))}

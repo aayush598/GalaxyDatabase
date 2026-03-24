@@ -271,14 +271,14 @@ export default function Categories() {
               <span className="text-[11px] font-bold text-blue-600 uppercase tracking-widest">Lead Categories</span>
             </div>
             <h2 className="britti-special text-4xl md:text-5xl text-[#0A0A0F] leading-[1.08] tracking-tight">
-              {ALL_LEAD_CATEGORIES.length} Premium Lead
+              Premium Lead
               <br />
               <span className="italic britti-gradient">Databases</span>
             </h2>
           </div>
           <div className="flex flex-col gap-3 lg:items-end">
             <p className="text-[#6B6B8A] text-sm leading-relaxed max-w-xs lg:text-right">
-              Verified, 3-month updated Excel files. Each card lists exactly what's included.
+              Verified, weekly updated Excel files. Each card lists exactly what's included.
             </p>
             <Link href="/categories" className="inline-flex items-center gap-2 text-[13px] font-semibold text-blue-600 hover:text-blue-700 transition-colors group">
               View all &amp; filter by sector

@@ -528,7 +528,7 @@ export default function Hero() {
         {/* ── Stats — count up ── */}
         <div className="animate-on-scroll delay-400 grid grid-cols-3 gap-4 max-w-2xl mx-auto mb-20">
           <CountUpStat
-            target={13}
+            target={50}
             suffix="+"
             label="Lead Categories"
             duration={1400}
