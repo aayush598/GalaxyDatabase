@@ -1,4 +1,4 @@
-export const WA_NUMBER = '919179569006';
+export const WA_NUMBER = '916267731901';
 export const WA_BASE = `https://wa.me/${WA_NUMBER}`;
 
 export const HERO_WA_MSG = encodeURIComponent(

@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { WhatsAppIcon as WAIcon } from "./icons";
 import Image from "next/image";
 
-const WA_NUMBER = "919179569006";
+const WA_NUMBER = "916267731901";
 const WA_BASE = `https://wa.me/${WA_NUMBER}`;
 
 export default function Navbar() {

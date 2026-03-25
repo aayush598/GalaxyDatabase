@@ -1,6 +1,6 @@
 'use client'
 
-const WA_NUMBER = '919179569006'
+const WA_NUMBER = '916267731901'
 const WA_MESSAGE = encodeURIComponent("Hello Sir/Mam, I am interested in your database services. Could you please help me?")
 
 export default function FloatingWA() {
