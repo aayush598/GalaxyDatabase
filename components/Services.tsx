@@ -238,7 +238,7 @@ function WhatsAppCRMVisual() {
     { side: 'left', text: 'Hi! Interested in your product 👋', delay: 0 },
     { side: 'right', text: 'Welcome! Which plan suits you best?', delay: 120 },
     { side: 'left', text: 'What are the pricing options?', delay: 240 },
-    { side: 'right', text: '⚡ Auto-reply sent in 0.3s via CRM', delay: 360, auto: true },
+    { side: 'right', text: '⚡ Auto-reply sent in 0.3s via Automation', delay: 360, auto: true },
   ]
   return (
     <div className="absolute inset-0 flex items-center justify-center overflow-hidden pointer-events-none select-none px-4">
@@ -256,7 +256,7 @@ function WhatsAppCRMVisual() {
             <div className="bg-[#075E54] px-3 py-2 flex items-center gap-2">
               <div className="w-6 h-6 rounded-full bg-emerald-300 border border-ink/10" />
               <div>
-                <div className="text-[9px] font-bold text-white">Galaxy CRM Bot</div>
+                <div className="text-[9px] font-bold text-white">Galaxy Automation Bot</div>
                 <div className="text-[7px] text-emerald-200">● online</div>
               </div>
             </div>
@@ -371,12 +371,12 @@ const SERVICES = [
   },
   {
     id: 'whatsapp-crm',
-    title: 'WhatsApp CRM Automation',
-    tag: 'Automation',
+    title: 'WhatsApp Bulk Messaging & CRM',
+    tag: 'Marketing',
     tagColor: 'bg-green-50 text-green-600 border-green-100',
     dot: 'bg-[#25D366]',
-    description: 'Automate your entire sales pipeline on WhatsApp — instant auto-replies, broadcast campaigns, lead qualification bots, and full CRM integration.',
-    features: ['Auto-reply bots', 'Broadcast campaigns', 'Lead qualification'],
+    description: 'Scale your business with WhatsApp bulk messaging and automated sales pipelines — instant auto-replies, broadcast campaigns, lead qualification bots, and full customer management integration.',
+    features: ['Bulk Messaging', 'Auto-reply bots', 'Lead qualification'],
     accentBtn: 'bg-[#25D366] hover:bg-[#1fba59] shadow-[#25D366]/20',
     Visual: WhatsAppCRMVisual,
     visualBg: 'bg-green-50/60',
