@@ -533,49 +533,6 @@ export default function Services() {
           ))}
         </div>
 
-        {/* ── Contact strip ── */}
-        <div className="animate-on-scroll relative rounded-2xl bg-white border border-[#EAEAE6] overflow-hidden shadow-[0_2px_12px_rgba(0,0,0,0.05)]">
-          {/* Dot grid bg */}
-          <div
-            className="absolute inset-0 opacity-40 pointer-events-none"
-            style={{
-              backgroundImage: 'radial-gradient(circle, #E2E8F0 1px, transparent 1px)',
-              backgroundSize: '24px 24px',
-            }}
-          />
-          <div className="relative z-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-8 p-8 md:p-10">
-            <div>
-              <div className="flex items-center gap-2 mb-2">
-                <div className="w-2 h-2 rounded-full bg-accent animate-pulse" />
-                <span className="text-[11px] text-slate-400 uppercase tracking-widest">Get in touch</span>
-              </div>
-              <h3 className="britti-special text-2xl md:text-3xl text-ink mb-1.5">Ready to get started?</h3>
-              <p className="text-slate-light text-sm">Our team responds within minutes on WhatsApp — fastest way to get a quote.</p>
-            </div>
-            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 shrink-0">
-              <a
-                href={`${WA_BASE}?text=${encodeURIComponent("Hello! I'd like to discuss your services and get a quote.")}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2.5 px-6 py-3 rounded-xl bg-[#25D366] text-white text-sm font-semibold hover:bg-[#1fba59] transition-all duration-300 shadow-sm hover:shadow-md wa-pulse whitespace-nowrap"
-              >
-                <WAIcon size={16} />
-                +91 62677 31901
-              </a>
-              <a
-                href="mailto:support@galaxyconnect.in"
-                className="flex items-center gap-2 px-6 py-3 rounded-xl border border-ink/5 text-slate-light text-sm font-medium hover:border-ink/20 hover:text-ink transition-all duration-300 whitespace-nowrap"
-              >
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <rect width="20" height="16" x="2" y="4" rx="2" />
-                  <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
-                </svg>
-                support@galaxyconnect.in
-              </a>
-            </div>
-          </div>
-        </div>
-
       </div>
     </section>
   )
