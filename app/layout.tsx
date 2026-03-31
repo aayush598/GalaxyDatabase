@@ -6,7 +6,9 @@ export const metadata: Metadata = {
   description: 'Access daily updated, premium quality B2B & B2C databases for doctors, teachers, car owners, students, HNI professionals and more. India\'s most trusted data provider.',
   keywords: 'lead generation, B2B database, B2C data, India leads, doctors database, teachers database, HNI data',
   icons: {
-    icon: "/favicon.png",
+    icon: [
+      { url: '/favicon.png', sizes: '144x144', type: 'image/png' }
+    ],
   },
   openGraph: {
     title: 'Galaxy Connect — Premium Lead Generation Data',
