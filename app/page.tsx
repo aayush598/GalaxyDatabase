@@ -22,6 +22,7 @@ export default function Home() {
     '@type': 'Organization',
     name: SITE_NAME,
     url: SITE_URL,
+    logo: 'https://www.galaxyconnect.in/logo.png',
     description: 'Verified B2B & B2C lead database provider in India. Daily updated, instant delivery across 25+ categories.',
     contactPoint: {
       '@type': 'ContactPoint',
@@ -30,11 +31,33 @@ export default function Home() {
       areaServed: 'IN',
       availableLanguage: ['en', 'hi'],
     },
+    sameAs: [
+      'https://www.facebook.com/',
+      'https://x.com/',
+      'https://www.instagram.com/',
+      'https://www.linkedin.com/',
+      'https://www.youtube.com/',
+    ],
+  }
+  const websiteJson = {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: SITE_NAME,
+    url: SITE_URL,
+    description: 'Buy verified India lead databases online across B2B & B2C categories with daily updates and instant delivery.',
+    inLanguage: 'en-IN',
+    publisher: {
+      '@type': 'Organization',
+      name: SITE_NAME,
+      url: SITE_URL,
+      logo: 'https://www.galaxyconnect.in/logo.png',
+    },
   }
 
   return (
     <main>
       <JsonLd data={orgJson} />
+      <JsonLd data={websiteJson} />
       <Navbar />
       <Hero />
       <Categories />

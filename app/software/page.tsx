@@ -4,6 +4,7 @@ import Image from 'next/image'
 import { SOFTWARE_INFO } from '@/lib/software'
 import { WA_BASE } from '@/lib/config'
 import { WhatsAppIcon as WAIcon, ArrowRight, ArrowLeft, MailIcon, DownloadIcon, PlatformIcon } from '@/components/icons'
+import EmailLink from '@/components/EmailLink'
 import JsonLd from '@/components/JsonLd'
 import Footer from '@/components/Footer'
 import FloatingWA from '@/components/FloatingWA'
@@ -398,12 +399,12 @@ export default function SoftwarePage() {
                                     <WAIcon size={16} />
                                     Get the App on WhatsApp
                                 </a>
-                                <a
-                                    href={`mailto:${SOFTWARE_INFO.email}`}
+                                <EmailLink
+                                    user="support"
+                                    domain="galaxyconnect.in"
                                     className="flex items-center justify-center gap-2 text-[13px] text-slate-500 hover:text-ink font-medium transition-colors"
-                                >
-                                    <MailIcon size={14} /> {SOFTWARE_INFO.email}
-                                </a>
+                                    icon={<MailIcon size={14} />}
+                                />
                             </div>
                         </div>
                     </div>

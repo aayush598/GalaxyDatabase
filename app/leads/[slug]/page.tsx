@@ -26,7 +26,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
     return {
         title: `${category.title} India | Buy Verified ${category.records} Contacts`,
-        description: `${category.description} Get ${category.records} ${category.sector.toLowerCase()} contacts across India, cleaned and refreshed daily, delivered instantly. Free sample on WhatsApp.`,
+        description: category.description,
         keywords: `buy ${category.title.toLowerCase()} database, ${category.title.toLowerCase()} leads india, ${category.sector.toLowerCase()} database, verified contacts, ${category.subItems.slice(0, 3).join(', ').toLowerCase()}`,
         alternates: { canonical: `${SITE_URL}/leads/${slug}` },
         openGraph: {

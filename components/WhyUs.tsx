@@ -1,5 +1,6 @@
 'use client'
 import { useEffect, useRef, useState } from 'react'
+import EmailLink from '@/components/EmailLink'
 
 const WA_BASE = 'https://wa.me/916267731901'
 
@@ -617,16 +618,17 @@ export default function WhyUs() {
                 <WAIcon size={16} />
                 +91 62677 31901
               </a>
-              <a
-                href="mailto:support@galaxyconnect.in"
+              <EmailLink
+                user="support"
+                domain="galaxyconnect.in"
                 className="flex items-center gap-2 px-6 py-3 rounded-xl border border-ink/5 text-slate-light text-sm font-medium hover:border-ink/20 hover:text-ink transition-all duration-300 whitespace-nowrap"
-              >
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <rect width="20" height="16" x="2" y="4" rx="2" />
-                  <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
-                </svg>
-                support@galaxyconnect.in
-              </a>
+                icon={
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <rect width="20" height="16" x="2" y="4" rx="2" />
+                    <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+                  </svg>
+                }
+              />
             </div>
           </div>
         </div>

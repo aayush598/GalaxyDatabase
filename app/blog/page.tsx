@@ -10,13 +10,13 @@ import Footer from '@/components/Footer'
 import FloatingWA from '@/components/FloatingWA'
 
 export const metadata: Metadata = {
-    title: 'Lead Buying Guides, Best Practices & Category Breakdowns | Galaxy Connect Blog',
+    title: 'Lead Buying Guides, Best Practices & Category Breakdowns',
     description:
         'Practical guides on buying verified lead databases in India, using them in a CRM, and choosing between lead categories. No jargon, just what converts.',
     keywords: 'lead buying guide, buy leads online, lead database india, how to buy leads, lead generation blog, india lead buying',
     alternates: { canonical: `${SITE_URL}/blog` },
     openGraph: {
-        title: 'Lead Buying Guides, Best Practices & Category Breakdowns | Galaxy Connect Blog',
+        title: 'Lead Buying Guides, Best Practices & Category Breakdowns',
         description: 'Practical guides on buying verified lead databases in India, using them in a CRM, and choosing between lead categories.',
         type: 'website',
         url: `${SITE_URL}/blog`,
