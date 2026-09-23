@@ -61,7 +61,7 @@ export default function Footer() {
           <div>
             <h4 className="font-semibold text-ink text-sm mb-5">Quick Links</h4>
             <ul className="space-y-3">
-              {["Categories", "Why Us", "Services", "Contact"].map((link) => (
+              {["Categories", "Services", "Why Us", "Contact"].map((link) => (
                 <li key={link}>
                   <a
                     href={`/#${link.toLowerCase().replace(" ", "-")}`}
@@ -71,6 +71,14 @@ export default function Footer() {
                   </a>
                 </li>
               ))}
+              <li>
+                <a
+                  href="/software"
+                  className="text-slate-light text-sm hover:text-ink transition-colors duration-200"
+                >
+                  GalaxyConnect App
+                </a>
+              </li>
               <li>
                 <a
                   href="/terms-and-conditions"

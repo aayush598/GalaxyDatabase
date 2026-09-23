@@ -41,7 +41,7 @@ export default function Navbar() {
 
           {/* Nav Links */}
           <nav className="hidden md:flex items-center gap-8">
-            {["Categories", "Why Us", "Services", "Contact"].map((item) => (
+            {["Categories", "Services", "Software", "Why Us", "Contact"].map((item) => (
               <a
                 key={item}
                 href={`#${item.toLowerCase().replace(" ", "-")}`}
@@ -90,7 +90,7 @@ export default function Navbar() {
       {menuOpen && (
         <div className="md:hidden bg-cream/95 backdrop-blur-lg border-b border-cream-warm px-6 pb-6">
           <nav className="flex flex-col gap-4 pt-4">
-            {["Categories", "Why Us", "Services", "Contact"].map((item) => (
+            {["Categories", "Services", "Software", "Why Us", "Contact"].map((item) => (
               <a
                 key={item}
                 href={`#${item.toLowerCase().replace(" ", "-")}`}
