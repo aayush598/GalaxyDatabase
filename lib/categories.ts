@@ -691,6 +691,29 @@ export const ALL_LEAD_CATEGORIES: UnifiedCategory[] = [
     ...BUSINESS_CATEGORIES,
 ]
 
+/* ─── SEO: slug helpers for per-category landing pages ──────────── */
+export function slugify(title: string): string {
+    return title
+        .toLowerCase()
+        .replace(/&(amp;)?/g, '')
+        .replace(/[^a-z0-9]+/g, '-')
+        .replace(/^-+|-+$/g, '')
+}
+
+export function getCategoryBySlug(slug: string): UnifiedCategory | undefined {
+    return ALL_LEAD_CATEGORIES.find((c) => slugify(c.title) === slug)
+}
+
+export function relatedCategories(category: UnifiedCategory, count = 3): UnifiedCategory[] {
+    const sameSector = ALL_LEAD_CATEGORIES.filter(
+        (c) => c.sector === category.sector && c.id !== category.id,
+    )
+    const rest = ALL_LEAD_CATEGORIES.filter(
+        (c) => c.sector !== category.sector && c.id !== category.id,
+    )
+    return [...sameSector, ...rest].slice(0, count)
+}
+
 /* ─── Accent palette ─────────────────────────────────────────── */
 export const palette: Record<
     string,

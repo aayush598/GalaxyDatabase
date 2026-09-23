@@ -1,7 +1,7 @@
 'use client'
 import { useEffect, useRef, useState, useCallback } from 'react'
 import Link from 'next/link'
-import { ALL_LEAD_CATEGORIES, palette, buildWALink } from '@/lib/categories'
+import { ALL_LEAD_CATEGORIES, palette, buildWALink, slugify } from '@/lib/categories'
 
 /* ── WhatsApp icon ─────────────────────────────────────────── */
 import {
@@ -52,7 +52,9 @@ function CarouselCard({ cat, artIdx }: { cat: typeof ALL_LEAD_CATEGORIES[0]; art
       {/* Content */}
       <div className="flex flex-col flex-1 px-5 pt-4 pb-5">
         <div className={`h-0.5 w-7 rounded-full ${p.bar} mb-3 group-hover:w-14 transition-all duration-500`} />
-        <h3 className="font-bold text-[#0A0A0F] text-[14px] leading-snug mb-2">{cat.title}</h3>
+        <Link href={`/leads/${slugify(cat.title)}`} className="group/title">
+          <h3 className="font-bold text-[#0A0A0F] text-[14px] leading-snug mb-2 group-hover/title:text-accent transition-colors">{cat.title}</h3>
+        </Link>
         <ul className="space-y-1.5 mb-3 flex-1">
           {cat.subItems.map((item) => (
             <li key={item} className="flex items-center gap-2">
@@ -64,6 +66,13 @@ function CarouselCard({ cat, artIdx }: { cat: typeof ALL_LEAD_CATEGORIES[0]; art
         <p className="text-[10px] text-slate-400 mb-4 leading-relaxed">
           <span className="text-slate-500 font-semibold">For:</span> {cat.idealFor}
         </p>
+        <Link
+          href={`/leads/${slugify(cat.title)}`}
+          className={`flex items-center justify-center gap-2 w-full py-2.5 px-4 rounded-xl border border-ink/10 text-ink text-[12px] font-semibold mb-2.5 hover:border-accent hover:text-accent transition-all duration-300`}
+        >
+          Read about this category
+          <ArrowRight size={13} />
+        </Link>
         <a
           href={buildWALink(cat.title, cat.subItems)}
           target="_blank"

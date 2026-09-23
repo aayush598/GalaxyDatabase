@@ -26,7 +26,7 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <a href="#" className="flex items-center gap-3 group">
+          <a href="/" className="flex items-center gap-3 group" aria-label="Galaxy Connect home">
             <Image
               src="/logo.png"
               alt="Galaxy Connect"
@@ -41,13 +41,20 @@ export default function Navbar() {
 
           {/* Nav Links */}
           <nav className="hidden md:flex items-center gap-8">
-            {["Categories", "Services", "Software", "Why Us", "Contact"].map((item) => (
+            {[
+              { label: "Categories", href: "/categories" },
+              { label: "Services", href: "/#services" },
+              { label: "Software", href: "/software" },
+              { label: "Blog", href: "/blog" },
+              { label: "Why Us", href: "/#why-us" },
+              { label: "Contact", href: "/#contact" },
+            ].map((item) => (
               <a
-                key={item}
-                href={`#${item.toLowerCase().replace(" ", "-")}`}
+                key={item.label}
+                href={item.href}
                 className="text-sm text-[#4A4A6A] hover:text-[#0A0A0F] transition-colors duration-200 relative group"
               >
-                {item}
+                {item.label}
                 <span className="absolute -bottom-0.5 left-0 w-0 h-px bg-accent group-hover:w-full transition-all duration-300" />
               </a>
             ))}
@@ -90,14 +97,21 @@ export default function Navbar() {
       {menuOpen && (
         <div className="md:hidden bg-cream/95 backdrop-blur-lg border-b border-cream-warm px-6 pb-6">
           <nav className="flex flex-col gap-4 pt-4">
-            {["Categories", "Services", "Software", "Why Us", "Contact"].map((item) => (
+            {[
+              { label: "Categories", href: "/categories" },
+              { label: "Services", href: "/#services" },
+              { label: "Software", href: "/software" },
+              { label: "Blog", href: "/blog" },
+              { label: "Why Us", href: "/#why-us" },
+              { label: "Contact", href: "/#contact" },
+            ].map((item) => (
               <a
-                key={item}
-                href={`#${item.toLowerCase().replace(" ", "-")}`}
+                key={item.label}
+                href={item.href}
                 onClick={() => setMenuOpen(false)}
                 className="text-base text-slate-light hover:text-ink transition-colors py-1"
               >
-                {item}
+                {item.label}
               </a>
             ))}
             <a

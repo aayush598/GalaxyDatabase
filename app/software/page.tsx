@@ -4,6 +4,7 @@ import Image from 'next/image'
 import { SOFTWARE_INFO } from '@/lib/software'
 import { WA_BASE } from '@/lib/config'
 import { WhatsAppIcon as WAIcon, ArrowRight, ArrowLeft, MailIcon, DownloadIcon, PlatformIcon } from '@/components/icons'
+import JsonLd from '@/components/JsonLd'
 import Footer from '@/components/Footer'
 import FloatingWA from '@/components/FloatingWA'
 
@@ -12,6 +13,7 @@ export const metadata: Metadata = {
     description:
         'GalaxyConnect App is our self-service B2B lead marketplace. Browse verified lead categories, purchase with credits, and export instantly. No calls, no waiting.',
     keywords: 'lead marketplace, buy leads online, purchase leads, B2B lead app, galaxyconnect app',
+    alternates: { canonical: 'https://www.galaxyconnect.in/software' },
     openGraph: {
         title: 'GalaxyConnect App | Buy Verified Leads On Demand',
         description:
@@ -121,8 +123,24 @@ function StepCard({ step }: { step: (typeof SOFTWARE_INFO.steps)[0] }) {
    PAGE
 ══════════════════════════════════════════════════════════════════ */
 export default function SoftwarePage() {
+    const softwareJson = {
+        '@context': 'https://schema.org',
+        '@type': 'SoftwareApplication',
+        name: SOFTWARE_INFO.name,
+        applicationCategory: 'BusinessApplication',
+        operatingSystem: 'Android, iOS, macOS, Windows, Linux',
+        description: SOFTWARE_INFO.tagline,
+        url: 'https://www.galaxyconnect.in/software',
+        offers: {
+            '@type': 'Offer',
+            price: '0',
+            priceCurrency: 'INR',
+        },
+    }
+
     return (
         <div className="min-h-screen overflow-x-hidden bg-[#F7F8FC]">
+            <JsonLd data={softwareJson} />
             {/* ═══ Header ═══ */}
             <header className="fixed top-0 left-0 right-0 z-50 bg-white/92 backdrop-blur-lg border-b border-[#EAEAE6] shadow-[0_1px_12px_rgba(0,0,0,0.06)]">
                 <div className="max-w-7xl mx-auto px-6 lg:px-8 h-16 flex items-center justify-between">

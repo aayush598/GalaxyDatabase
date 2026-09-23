@@ -1,7 +1,8 @@
 "use client";
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
-import { ALL_LEAD_CATEGORIES, palette, buildWALink } from "@/lib/categories";
+import { useRouter } from "next/navigation";
+import { ALL_LEAD_CATEGORIES, palette, buildWALink, slugify } from "@/lib/categories";
 
 import {
   WhatsAppIcon as WAIcon,
@@ -81,8 +82,10 @@ function CategoryCard({
   index: number;
 }) {
   const ref = useRef<HTMLDivElement>(null);
+  const router = useRouter();
   const p = palette[cat.accentColor];
   const Art = ARTS[index % ARTS.length];
+  const href = `/leads/${slugify(cat.title)}`;
 
   useEffect(() => {
     const obs = new IntersectionObserver(
@@ -96,7 +99,11 @@ function CategoryCard({
   return (
     <div
       ref={ref}
-      className="animate-on-scroll group flex flex-col bg-white rounded-2xl border border-[#EAEAE6] overflow-hidden hover:-translate-y-1.5 hover:shadow-[0_24px_60px_rgba(0,0,0,0.11)] transition-all duration-300 ease-out"
+      role="link"
+      tabIndex={0}
+      onClick={() => router.push(href)}
+      onKeyDown={(e) => e.key === "Enter" && router.push(href)}
+      className="animate-on-scroll group flex flex-col bg-white rounded-2xl border border-[#EAEAE6] overflow-hidden hover:-translate-y-1.5 hover:shadow-[0_24px_60px_rgba(0,0,0,0.11)] hover:border-ink/15 transition-all duration-300 ease-out cursor-pointer"
       style={{ transitionDelay: `${(index % 3) * 55}ms` }}
     >
       {/* Art zone */}
@@ -166,15 +173,25 @@ function CategoryCard({
       {/* CTA */}
       <div className="px-6 pb-5 flex-shrink-0">
         <div className="border-t border-[#F0F0EC] mb-4" />
-        <a
-          href={buildWALink(cat.title, cat.subItems)}
-          target="_blank"
-          rel="noopener noreferrer"
-          className={`flex items-center justify-center gap-2.5 w-full py-3 px-4 rounded-xl text-white text-[13px] font-semibold ${p.btn} shadow-sm hover:shadow-md transition-all duration-300`}
-        >
-          <WAIcon size={14} />
-          Get This Database
-        </a>
+        <div className="flex gap-2">
+          <Link
+            href={href}
+            onClick={(e) => e.stopPropagation()}
+            className={`flex items-center justify-center gap-2 flex-1 py-3 px-4 rounded-xl border border-[#E4E4E0] text-ink text-[13px] font-semibold hover:border-accent hover:text-accent transition-all duration-300`}
+          >
+            View details
+          </Link>
+          <a
+            href={buildWALink(cat.title, cat.subItems)}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={(e) => e.stopPropagation()}
+            className={`flex items-center justify-center gap-2.5 flex-1 py-3 px-4 rounded-xl text-white text-[13px] font-semibold ${p.btn} shadow-sm hover:shadow-md transition-all duration-300`}
+          >
+            <WAIcon size={14} />
+            Enquire
+          </a>
+        </div>
       </div>
     </div>
   );

@@ -1,20 +1,32 @@
 import type { Metadata } from 'next'
 import './globals.css'
 import Script from 'next/script'
+import { SITE_URL, SITE_NAME, SITE_TAGLINE } from '@/lib/site'
 
 export const metadata: Metadata = {
-  title: 'Galaxy Connect — Premium Lead Generation Data',
-  description: 'Access daily updated, premium quality B2B & B2C databases for doctors, teachers, car owners, students, HNI professionals and more. India\'s most trusted data provider.',
-  keywords: 'lead generation, B2B database, B2C data, India leads, doctors database, teachers database, HNI data',
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: 'Galaxy Connect | Buy Verified India Lead Databases Online',
+    template: '%s | Galaxy Connect',
+  },
+  description: 'Buy verified B2B & B2C lead databases in India across real estate, education, finance, automobile, business owners and 25+ more categories. Daily updates, instant delivery, Excel/CSV/JSON export.',
+  keywords: 'buy leads online india, lead database, verified leads, B2B database, B2C data, real estate leads, education leads, finance leads, India lead generation',
   icons: {
     icon: [
       { url: '/favicon.png', sizes: '144x144', type: 'image/png' }
     ],
   },
   openGraph: {
-    title: 'Galaxy Connect — Premium Lead Generation Data',
-    description: 'Premium quality, daily updated leads across 13+ categories. Fuel your outreach with verified Indian business data.',
+    title: 'Galaxy Connect | Buy Verified India Lead Databases Online',
+    description: 'Daily updated, verified Indian lead databases across 25+ categories. Purchased instantly with a credit wallet, exported as Excel, CSV or JSON.',
     type: 'website',
+    url: SITE_URL,
+    siteName: SITE_NAME,
+  },
+  twitter: {
+    card: 'summary',
+    title: 'Galaxy Connect | Buy Verified India Lead Databases Online',
+    description: SITE_TAGLINE,
   },
   verification: {
     google: 'q_WjYNddpX7fTO4oES6AzapjYYcCOIiR7TN8_9KsWeE',
