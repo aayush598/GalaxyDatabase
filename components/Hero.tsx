@@ -381,7 +381,7 @@ function VideoPlayer() {
         onClick={handlePlayClick}
       >
         <source
-          src="https://res.cloudinary.com/dyv9kenuj/video/upload/v1774338588/GalaxyConnect_-_Premium_B2B_Growth_1_dgoqkp.mp4"
+          src="https://res.cloudinary.com/dmouwd2ob/video/upload/v1775129651/GalaxyConnect_-_Premium_B2B_Growth_1_xwaqpe.mp4"
           type="video/mp4"
         />
         Your browser does not support the video tag.

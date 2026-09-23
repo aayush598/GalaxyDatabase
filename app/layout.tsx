@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import './globals.css'
+import Script from 'next/script'
 
 export const metadata: Metadata = {
   title: 'Galaxy Connect — Premium Lead Generation Data',
@@ -15,6 +16,9 @@ export const metadata: Metadata = {
     description: 'Premium quality, daily updated leads across 13+ categories. Fuel your outreach with verified Indian business data.',
     type: 'website',
   },
+  verification: {
+    google: 'q_WjYNddpX7fTO4oES6AzapjYYcCOIiR7TN8_9KsWeE',
+  },
 }
 
 export default function RootLayout({
@@ -24,7 +28,22 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="noise-overlay">{children}</body>
+      <body className="noise-overlay">
+        {children}
+        <Script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-J3GWY0MML6"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-J3GWY0MML6');
+          `}
+        </Script>
+      </body>
     </html>
   )
 }
