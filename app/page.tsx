@@ -8,7 +8,7 @@ import SoftwareSection from '@/components/SoftwareSection'
 import Footer from '@/components/Footer'
 import FloatingWA from '@/components/FloatingWA'
 import JsonLd from '@/components/JsonLd'
-import { SITE_URL, SITE_NAME } from '@/lib/site'
+import { SITE_URL, SITE_NAME, SOCIAL_LINKS } from '@/lib/site'
 
 export const metadata: Metadata = {
   title: 'Buy Verified India Lead Databases Online | Galaxy Connect',
@@ -31,13 +31,7 @@ export default function Home() {
       areaServed: 'IN',
       availableLanguage: ['en', 'hi'],
     },
-    sameAs: [
-      'https://www.facebook.com/',
-      'https://x.com/',
-      'https://www.instagram.com/',
-      'https://www.linkedin.com/',
-      'https://www.youtube.com/',
-    ],
+    sameAs: SOCIAL_LINKS.map((s) => s.href),
   }
   const websiteJson = {
     '@context': 'https://schema.org',
