@@ -1,13 +1,13 @@
 import Link from "next/link";
 import Image from "next/image";
 import type { Metadata } from "next";
-import { SITE_URL } from "@/lib/site";
+import { SITE_URL, siteAlternates } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Refund Policy",
   description:
     "Refund policy for Galaxy Connect lead databases and services. Learn about our fair, transparent refund and replacement terms.",
-  alternates: { canonical: `${SITE_URL}/refund-policy` },
+  alternates: siteAlternates(`${SITE_URL}/refund-policy`),
   openGraph: {
     title: "Refund Policy",
     description: "Galaxy Connect refund policy, cancellations and replacements.",

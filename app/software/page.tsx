@@ -3,6 +3,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { SOFTWARE_INFO } from '@/lib/software'
 import { WA_BASE } from '@/lib/config'
+import { SITE_URL, siteAlternates } from '@/lib/site'
 import { WhatsAppIcon as WAIcon, ArrowRight, ArrowLeft, MailIcon, DownloadIcon, PlatformIcon } from '@/components/icons'
 import EmailLink from '@/components/EmailLink'
 import JsonLd from '@/components/JsonLd'
@@ -14,7 +15,7 @@ export const metadata: Metadata = {
     description:
         'GalaxyConnect App is our self-service B2B lead marketplace. Browse verified lead categories, purchase with credits, and export instantly. No calls, no waiting.',
     keywords: 'lead marketplace, buy leads online, purchase leads, B2B lead app, galaxyconnect app',
-    alternates: { canonical: 'https://www.galaxyconnect.in/software' },
+    alternates: siteAlternates(`${SITE_URL}/software`),
     openGraph: {
         title: 'GalaxyConnect App | Buy Verified Leads On Demand',
         description:

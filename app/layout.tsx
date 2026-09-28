@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import './globals.css'
 import Script from 'next/script'
-import { SITE_URL, SITE_NAME, SITE_TAGLINE } from '@/lib/site'
+import { SITE_URL, SITE_NAME, SITE_TAGLINE, siteAlternates } from '@/lib/site'
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -9,16 +9,17 @@ export const metadata: Metadata = {
     default: 'Galaxy Connect | Buy Verified India Lead Databases Online',
     template: '%s | Galaxy Connect',
   },
-  description: 'Buy verified B2B & B2C lead databases in India across 25+ categories. Daily updates, instant delivery, Excel/CSV/JSON export.',
+  description: 'Buy verified B2B & B2C lead databases in India across 30+ categories. Daily updates, instant delivery, Excel/CSV/JSON export.',
   keywords: 'buy leads online india, lead database, verified leads, B2B database, B2C data, real estate leads, education leads, finance leads, India lead generation',
   icons: {
     icon: [
       { url: '/favicon.png', sizes: '144x144', type: 'image/png' }
     ],
   },
+  alternates: siteAlternates(SITE_URL),
   openGraph: {
     title: 'Galaxy Connect | Buy Verified India Lead Databases Online',
-    description: 'Daily updated, verified Indian lead databases across 25+ categories. Purchased instantly with a credit wallet, exported as Excel, CSV or JSON.',
+    description: 'Daily updated, verified Indian lead databases across 30+ categories. Purchased instantly with a credit wallet, exported as Excel, CSV or JSON.',
     type: 'website',
     url: SITE_URL,
     siteName: SITE_NAME,
@@ -40,14 +41,16 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: `document.documentElement.classList.add('js');` }} />
+      </head>
       <body className="noise-overlay">
         {children}
         <Script
-          async
           src="https://www.googletagmanager.com/gtag/js?id=G-J3GWY0MML6"
-          strategy="afterInteractive"
+          strategy="lazyOnload"
         />
-        <Script id="google-analytics" strategy="afterInteractive">
+        <Script id="google-analytics" strategy="lazyOnload">
           {`
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
@@ -59,7 +62,7 @@ export default function RootLayout({
           <>
             <Script
               id="facebook-pixel"
-              strategy="afterInteractive"
+              strategy="lazyOnload"
               dangerouslySetInnerHTML={{
                 __html: `
                   !function(f,b,e,v,n,t,s)
@@ -75,7 +78,7 @@ export default function RootLayout({
                 `,
               }}
             />
-            <Script id="facebook-pixel-noscript" strategy="afterInteractive">
+            <Script id="facebook-pixel-noscript" strategy="lazyOnload">
               {`<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=${process.env.NEXT_PUBLIC_FACEBOOK_PIXEL_ID}&ev=PageView&noscript=1" /></noscript>`}
             </Script>
           </>

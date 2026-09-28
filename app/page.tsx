@@ -8,12 +8,12 @@ import SoftwareSection from '@/components/SoftwareSection'
 import Footer from '@/components/Footer'
 import FloatingWA from '@/components/FloatingWA'
 import JsonLd from '@/components/JsonLd'
-import { SITE_URL, SITE_NAME, SOCIAL_LINKS } from '@/lib/site'
+import { SITE_URL, SITE_NAME, SOCIAL_LINKS, siteAlternates } from '@/lib/site'
 
 export const metadata: Metadata = {
   title: 'Buy Verified India Lead Databases Online | Galaxy Connect',
-  description: 'India trusted source for verified B2B & B2C lead databases. Daily updated contact data across 25+ categories, delivered instantly.',
-  alternates: { canonical: SITE_URL },
+  description: 'India trusted source for verified B2B & B2C lead databases. Daily updated contact data across 30+ categories, delivered instantly.',
+  alternates: siteAlternates(SITE_URL),
 }
 
 export default function Home() {
@@ -23,7 +23,7 @@ export default function Home() {
     name: SITE_NAME,
     url: SITE_URL,
     logo: 'https://www.galaxyconnect.in/logo.png',
-    description: 'Verified B2B & B2C lead database provider in India. Daily updated, instant delivery across 25+ categories.',
+    description: 'Verified B2B & B2C lead database provider in India. Daily updated, instant delivery across 30+ categories.',
     contactPoint: {
       '@type': 'ContactPoint',
       telephone: '+91-62677-31901',

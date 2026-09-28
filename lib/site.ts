@@ -3,6 +3,17 @@ export const SITE_URL = 'https://www.galaxyconnect.in'
 export const SITE_NAME = 'Galaxy Connect'
 export const SITE_TAGLINE = 'Buy Verified India Business & Consumer Leads Online'
 
+/* Alternate-language (hreflang) declaration, single-language site */
+export function siteAlternates(canonical: string) {
+  return {
+    canonical,
+    languages: {
+      en: canonical,
+      'x-default': canonical,
+    },
+  }
+}
+
 /* ─── Social profiles (single source of truth) ──────────────── */
 export const SOCIAL_LINKS = [
   {

@@ -3,7 +3,7 @@ import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import { getPostBySlug, relatedPosts, POSTS } from '@/lib/posts'
 import { getCategoryBySlug, buildWALink, slugify } from '@/lib/categories'
-import { SITE_URL, SITE_NAME } from '@/lib/site'
+import { SITE_URL, SITE_NAME, siteAlternates } from '@/lib/site'
 import { ArrowLeft, ArrowUpRight, WhatsAppIcon as WAIcon } from '@/components/icons'
 import Navbar from '@/components/Navbar'
 import Breadcrumbs from '@/components/Breadcrumbs'
@@ -25,7 +25,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
         title: post.title,
         description: post.description,
         keywords: post.keywords,
-        alternates: { canonical: `${SITE_URL}/blog/${post.slug}` },
+        alternates: siteAlternates(`${SITE_URL}/blog/${post.slug}`),
         authors: [{ name: SITE_NAME }],
         openGraph: {
             title: post.title,

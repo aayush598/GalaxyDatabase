@@ -79,6 +79,7 @@ function LightCanvas() {
       my = H / 2;
       initOrbs();
       initNodes();
+      if (running === false) draw();
     };
 
     const initOrbs = () => {
@@ -234,7 +235,7 @@ function LightCanvas() {
         ctx.restore();
       });
 
-      raf = requestAnimationFrame(draw);
+      if (running) raf = requestAnimationFrame(draw);
     };
 
     const onMove = (e: MouseEvent) => {
@@ -243,13 +244,46 @@ function LightCanvas() {
       my = e.clientY - r.top;
     };
 
+    let running = false;
+    const reducedMotion = window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches ?? false;
+
+    const start = () => {
+      if (running || reducedMotion) return;
+      running = true;
+      draw();
+    };
+
+    const stop = () => {
+      running = false;
+    };
+
     window.addEventListener("resize", resize);
     window.addEventListener("mousemove", onMove);
     resize();
-    draw();
+    if (reducedMotion) {
+      draw();
+      return () => {
+        cancelAnimationFrame(raf);
+        window.removeEventListener("resize", resize);
+        window.removeEventListener("mousemove", onMove);
+      };
+    }
+
+    const io = new IntersectionObserver(
+      ([entry]) => (entry.isIntersecting ? start() : stop()),
+      { threshold: 0 },
+    );
+    io.observe(canvas);
+
+    const onVis = () => (document.hidden ? stop() : start());
+    document.addEventListener("visibilitychange", onVis);
+
+    start();
 
     return () => {
       cancelAnimationFrame(raf);
+      io.disconnect();
+      document.removeEventListener("visibilitychange", onVis);
       window.removeEventListener("resize", resize);
       window.removeEventListener("mousemove", onMove);
     };
@@ -379,6 +413,8 @@ function VideoPlayer() {
         ref={videoRef}
         className="w-full aspect-video object-cover bg-black"
         onClick={handlePlayClick}
+        preload="none"
+        playsInline
       >
         <source
           src="https://res.cloudinary.com/dmouwd2ob/video/upload/v1775129651/GalaxyConnect_-_Premium_B2B_Growth_1_xwaqpe.mp4"
@@ -463,7 +499,7 @@ export default function Hero() {
       {/* ════════════════ CONTENT ════════════════ */}
       <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
         {/* ── Trust badge ── */}
-        <div className="animate-on-scroll flex justify-center mb-10 pt-14">
+        <div className="animate-on-scroll animate-static flex justify-center mb-10 pt-14">
           <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-white/80 backdrop-blur-sm border border-[#DBEAFE] shadow-sm">
             <span className="relative flex h-2 w-2">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-60" />
@@ -476,7 +512,7 @@ export default function Hero() {
         </div>
 
         {/* ── Headline ── */}
-        <div className="animate-on-scroll text-center mb-7 delay-100">
+        <div className="animate-on-scroll animate-static text-center mb-7 delay-100">
           <h1 className="britti-special text-5xl md:text-6xl lg:text-[72px] text-[#0A0A0F] leading-[1.06] tracking-tighter">
             Fuel Your Business
             <br />
@@ -488,11 +524,9 @@ export default function Hero() {
         </div>
 
         {/* ── Sub-headline ── */}
-        <div className="animate-on-scroll delay-200 text-center mb-11">
+        <div className="animate-on-scroll animate-static delay-200 text-center mb-11">
           <p className="text-[#6B6B8A] text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
-            Verified, regularly-updated B2B &amp; B2C databases across 50+
-            categories. Doctors, HNI executives, car owners, government
-            employees —{" "}
+            Verified India lead databases, updated regularly across 30+ B2B &amp; B2C categories. Doctors, HNI executives, car owners, government employees —{" "}
             <span className="text-[#3B3B5A] font-medium">
               all in one place.
             </span>
@@ -500,7 +534,7 @@ export default function Hero() {
         </div>
 
         {/* ── CTA buttons ── */}
-        <div className="animate-on-scroll delay-300 flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
+        <div className="animate-on-scroll animate-static delay-300 flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
           {/* Primary — WhatsApp */}
           <a
             href={`${WA_BASE}?text=${WA_MSG}`}

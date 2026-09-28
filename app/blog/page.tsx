@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { POSTS } from '@/lib/posts'
-import { SITE_URL, SITE_NAME } from '@/lib/site'
+import { SITE_URL, SITE_NAME, siteAlternates } from '@/lib/site'
 import { getCategoryBySlug } from '@/lib/categories'
 import { ArrowRight, ArrowUpRight } from '@/components/icons'
 import Navbar from '@/components/Navbar'
@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     description:
         'Practical guides on buying verified lead databases in India, using them in a CRM, and choosing between lead categories. No jargon, just what converts.',
     keywords: 'lead buying guide, buy leads online, lead database india, how to buy leads, lead generation blog, india lead buying',
-    alternates: { canonical: `${SITE_URL}/blog` },
+    alternates: siteAlternates(`${SITE_URL}/blog`),
     openGraph: {
         title: 'Lead Buying Guides, Best Practices & Category Breakdowns',
         description: 'Practical guides on buying verified lead databases in India, using them in a CRM, and choosing between lead categories.',

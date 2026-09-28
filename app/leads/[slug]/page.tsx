@@ -4,7 +4,7 @@ import Link from 'next/link'
 import {
     ALL_LEAD_CATEGORIES, getCategoryBySlug, relatedCategories, buildWALink, slugify, palette,
 } from '@/lib/categories'
-import { SITE_URL, SITE_NAME } from '@/lib/site'
+import { SITE_URL, SITE_NAME, siteAlternates } from '@/lib/site'
 import { ArrowRight, WhatsAppIcon as WAIcon } from '@/components/icons'
 import CategoryArt from '@/components/CategoryArt'
 import Navbar from '@/components/Navbar'
@@ -28,7 +28,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
         title: `${category.title} India | Buy Verified ${category.records} Contacts`,
         description: category.description,
         keywords: `buy ${category.title.toLowerCase()} database, ${category.title.toLowerCase()} leads india, ${category.sector.toLowerCase()} database, verified contacts, ${category.subItems.slice(0, 3).join(', ').toLowerCase()}`,
-        alternates: { canonical: `${SITE_URL}/leads/${slug}` },
+        alternates: siteAlternates(`${SITE_URL}/leads/${slug}`),
         openGraph: {
             title: `${category.title} India | Galaxy Connect`,
             description: `Verified ${category.records} ${category.sector} contacts, refreshed daily and delivered instantly as Excel, CSV or JSON.`,

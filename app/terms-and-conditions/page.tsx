@@ -1,13 +1,13 @@
 import Link from "next/link";
 import Image from "next/image";
 import type { Metadata } from "next";
-import { SITE_URL } from "@/lib/site";
+import { SITE_URL, siteAlternates } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Terms & Conditions",
   description:
     "Terms and conditions for using Galaxy Connect lead database marketplace, website and services.",
-  alternates: { canonical: `${SITE_URL}/terms-and-conditions` },
+  alternates: siteAlternates(`${SITE_URL}/terms-and-conditions`),
   openGraph: {
     title: "Terms & Conditions",
     description: "Terms and conditions governing the use of Galaxy Connect services.",

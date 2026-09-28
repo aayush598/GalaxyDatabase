@@ -57,7 +57,7 @@ export const SOFTWARE_INFO = {
     whatsappNumber: '+91 62677 31901',
     email: 'support@galaxyconnect.in',
     stats: [
-        { value: '50+', label: 'Lead categories' },
+        { value: '30+', label: 'Lead categories' },
         { value: '30L+', label: 'Verified records' },
         { value: 'Instant', label: 'Purchase & delivery' },
         { value: '24/7', label: 'Self-service access' },
